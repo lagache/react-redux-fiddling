@@ -1,30 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import './tiles.scss';
 
-class TileItem extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  // handleClick(e) {
-  //   this.props.onCarAddClick({
-  //     name: 'tesla',
-  //     hp: 400
-  //   });
-  // }
-
-  render() {
+var TileItem = React.createClass({
+  render: function() {
+    var data = this.props.data;
+    var className = "tile "+data.color;
     return (
-      <div class='tile { color }'></div>
-    )
+        <span className={className}>
+            tile {data.id}
+        </span>
+    );
   }
-}
-
-TileItem.propTypes = {
-  tile: PropTypes.shape({
-    color: PropTypes.string.isRequired,
-  }),
-  // onCarAddClick: PropTypes.func.isRequired
-};
+});
 
 export default TileItem;
