@@ -1,9 +1,20 @@
+.TilesList {
+	background-color: yellow;
+	display: inline;
+}
+
 .tile {
   width: 100px;
   height: 100px;
   padding: 20px;
   margin: 20px;
-  border-style:solid;
+  border-radius: 7px;
+  border: 2px solid black;
+}
+
+.active {
+	border: 2px solid #dadada;
+    border-radius: 7px;
 }
 
 .red {
