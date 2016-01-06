@@ -1,49 +1,37 @@
 import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
-import * as Actions from '../../actions';
+import {startGame} from '../../actions';
 
 class Header extends Component {
     constructor(props) {
         super(props);
     }
 
-    handleClick() {
-        console.log('click!');
-    }
-
     render() {
+        // Injected by connect() call:
+        const { dispatch } = this.props;
         return (
             <div className="header">
-                <h3>Level: {this.props.data.level}</h3>
-                <h3>Round: {this.props.data.round}</h3>
+                <h3>Level: {this.props.tiles.level}</h3>
+                <h3>Round: {this.props.tiles.round}</h3>
                 <br/><br/>
-                <p onClick={this.handleClick}>
-                    ADD
-                </p>
+                <button onClick={() => this.props.dispatch(startGame())}>
+                    StartGame
+                </button>
             </div>
     )
     }
 }
 
-Header.propTypes = {
-    count: PropTypes.object
-};
-
-//Place state of redux store into props of component
-function mapStateToProps(state) {
-    let profile = state.profile ? state.profile.profile : null;
+// Which props do we want to inject, given the global state?
+// Note: use https://github.com/faassen/reselect for better performance.
+function select(state) {
     return {
-        profile: profile,
-        router: state.router
-    };
+        tiles : state.tiles
+    }
 }
 
-//Place action methods into props
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(Actions, dispatch);
-}
-
-export default Header;
+// Wrap the component to inject dispatch and state into it
+export default connect(select)(Header);

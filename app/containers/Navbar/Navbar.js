@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 import * as Actions from '../../actions';
 import './Navbar.scss';
 
+
 class Navbar extends Component {
   constructor(props) {
     super(props);

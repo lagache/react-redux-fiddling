@@ -13,7 +13,7 @@ let TileItem = React.createClass({
       this.setState({isOn : true});
       setTimeout(function (){
           self.setState({isOn : false})
-      }, 1000);
+      }, 300);
   },
 
   render: function() {

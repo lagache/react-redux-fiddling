@@ -1,6 +1,5 @@
 .TilesList {
-	background-color: yellow;
-	display: inline;
+	display: -webkit-box;
 }
 
 .tile {
@@ -8,13 +7,13 @@
   height: 100px;
   padding: 20px;
   margin: 20px;
-  border-radius: 7px;
+  border-radius: 20px;
   border: 2px solid black;
 }
 
 .active {
 	border: 2px solid #dadada;
-    border-radius: 7px;
+    border-radius: 20px;
 }
 
 .red {
@@ -29,3 +28,6 @@
   background-color: green;
 }
 
+.yellow {
+  background-color: yellow;
+}
