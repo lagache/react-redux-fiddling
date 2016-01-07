@@ -7,30 +7,30 @@ import AppRouter from './routes';
 import {playSequence, activeTile} from './actions';
 
 const initialState = {
-  tiles:[{
-    nbTiles: 4,
-    gameOn: false
-  }]
+    tiles: [{
+        nbTiles: 4,
+        gameOn: false
+    }]
 };
 
 const store = configureStore(initialState);
 
 class Root extends Component {
 
-  render() {
-    return (
+    render() {
+        return (
 
-      <div>
-        <Provider store={store}>
-          <AppRouter />
-        </Provider>
-      </div>
-    )
-  }
+            <div>
+                <Provider store={store}>
+                    <AppRouter />
+                </Provider>
+            </div>
+        )
+    }
 }
 
 let rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <Root />, rootElement
+    <Root />, rootElement
 );

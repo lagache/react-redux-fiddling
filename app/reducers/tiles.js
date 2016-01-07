@@ -10,8 +10,8 @@ export default function tiles(state = [], action = {}) {
             }
         case CHECK_TILE:
 
-            if(state.sequence[state.currentTile++] === parseInt(action.tileId)) {
-                if(state.sequence.length === state.currentTile) {
+            if (state.sequence[state.currentTile++] === parseInt(action.tileId)) {
+                if (state.sequence.length === state.currentTile) {
                     return {
                         level: state.level,
                         round: state.round,
@@ -40,12 +40,12 @@ export default function tiles(state = [], action = {}) {
 
         case PLAY_SEQUENCE:
 
-            for(let i = 0 ; i < state.data.length ; i++) {
+            for (let i = 0; i < state.data.length; i++) {
                 state.data[i].active = false;
             }
             state.currentSeq++;
 
-            if(state.currentSeq >= state.sequence.length) {
+            if (state.currentSeq >= state.sequence.length) {
                 return {
                     level: state.level,
                     round: state.round,
@@ -72,7 +72,7 @@ export default function tiles(state = [], action = {}) {
         case START_GAME:
 
 
-            for(let i = 0 ; i < action.data.length ; i++) {
+            for (let i = 0; i < action.data.length; i++) {
                 action.data[i].active = false;
             }
             let idTileToActive = action.sequence[0];

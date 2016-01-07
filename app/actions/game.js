@@ -1,20 +1,19 @@
 export const PLAY_SEQUENCE = 'PLAY_SEQUENCE';
 
 function* getSequence() {
-  yield 1;
-  yield 3;
-  yield 2;
-  yield 2;
-  yield 1;
-  yield 1;
-  yield 3;
+    yield 1;
+    yield 3;
+    yield 2;
+    yield 2;
+    yield 1;
+    yield 1;
+    yield 3;
 };
 
 export function playSequence() {
-  console.log('in the play sequence action');
-  return {
-    type: PLAY_SEQUENCE,
-    id: getSequence().next().value
-  };
+    return {
+        type: PLAY_SEQUENCE,
+        id: getSequence().next().value
+    };
 }
 

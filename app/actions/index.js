@@ -1,7 +1,10 @@
 export const PLAY_SEQUENCE = 'PLAY_SEQUENCE';
 
 //TODO need to be move in a file managing all sets of data
-const INIT_SET_TILES = [{id: '0', color : 'red'}, {id: '1', color : 'blue'}, {id: '2', color: 'green'}, {id: '3', color : 'yellow'}];
+const INIT_SET_TILES = [{id: '0', color: 'red'}, {id: '1', color: 'blue'}, {id: '2', color: 'green'}, {
+    id: '3',
+    color: 'yellow'
+}];
 const SEQUENCE_1 = [1, 0, 3, 2];
 
 

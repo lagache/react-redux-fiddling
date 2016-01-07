@@ -40,13 +40,14 @@ class Header extends Component {
         return (
             <div className="header">
                 <h3>Level: {this.props.tiles.level}</h3>
+
                 <h3>Round: {this.props.tiles.round}</h3>
                 <br/><br/>
                 <button onClick={() => this.startTheGame() }>
                     StartGame
                 </button>
             </div>
-    )
+        )
     }
 }
 
@@ -54,7 +55,7 @@ class Header extends Component {
 // Note: use https://github.com/faassen/reselect for better performance.
 function select(state) {
     return {
-        tiles : state.tiles
+        tiles: state.tiles
     }
 }
 
