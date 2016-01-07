@@ -15,8 +15,12 @@ class TilesList extends Component {
   render() {
     var tiles;
 
-    if(!this.props || !this.props.tiles || !this.props.tiles.data) {
+    if(!this.props.tiles.gameOn) {
         return (<p>game is not started</p>);
+    } else if(this.props.tiles.gameOver) {
+        return (<p> you loose...</p>);
+    } else if (this.props.tiles.gameWon) {
+        return (<p> CONGRATULATIONS!</p>);
     }
     tiles = this.props.tiles.data.map(function (tile) {
         return (

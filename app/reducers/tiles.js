@@ -10,21 +10,30 @@ export default function tiles(state = [], action = {}) {
             }
         case CHECK_TILE:
 
-            if(state.sequence[state.currentTile] === parseInt(action.tileId)) {
-                return {
-                    level: state.level,
-                    round: state.round,
-                    gameOn: true,
-                    gameOver: false,
-                    data: state.data,
-                    sequence: state.sequence,
-                    currentTile: state.currentTile++
+            if(state.sequence[state.currentTile++] === parseInt(action.tileId)) {
+                if(state.sequence.length === state.currentTile) {
+                    return {
+                        level: state.level,
+                        round: state.round,
+                        gameWon: true,
+                        gameOn: state.gameOn
+                    }
+                } else {
+                    return {
+                        level: state.level,
+                        round: state.round,
+                        gameOn: true,
+                        data: state.data,
+                        sequence: state.sequence,
+                        currentTile: state.currentTile,
+                        gameOn: state.gameOn
+                    }
                 }
             } else {
                 return {
                     level: state.level,
                     round: state.round,
-                    gameOn: false,
+                    gameOn: true,
                     gameOver: true
                 }
             }
@@ -53,7 +62,7 @@ export default function tiles(state = [], action = {}) {
                 return {
                     level: state.level,
                     round: state.round,
-                    gameOn: false,
+                    gameOn: true,
                     data: state.data,
                     sequence: state.sequence,
                     currentSeq: state.currentSeq,
@@ -73,7 +82,7 @@ export default function tiles(state = [], action = {}) {
             return {
                 level: 1,
                 round: 0,
-                gameOn: false,
+                gameOn: true,
                 data: action.data,
                 sequence: action.sequence,
                 currentSeq: 0,
