@@ -24,7 +24,7 @@ class TilesList extends Component {
         );
     });
       // Injected by connect() call:
-      //const { dispatch } = this.props;
+      const { dispatch } = this.props;
 
     return (
         <div className="TilesList">

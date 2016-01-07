@@ -2,11 +2,36 @@ import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import {startGame} from '../../actions';
+import {startGame, playSequence} from '../../actions';
 
 class Header extends Component {
     constructor(props) {
         super(props);
+    }
+
+    playSequenceTillEnd(count) {
+
+        setTimeout(() => {
+                if (--count > 0) {
+                    this.props.dispatch(playSequence());
+                    this.playSequenceTillEnd(count);
+                } else {
+
+                }
+
+            }
+            , 500);
+    }
+
+    startTheGame() {
+        this.props.dispatch(startGame());
+        this.playSequenceTillEnd(5/*naughty magic number to remove with the number of object in the sequence*/);
+        //Todo use a timeout in a recursive function with a clause
+        //let myInterval = setInterval(
+        //    () => this.props.dispatch(playSequence())
+        //, 500);
+        //
+        //setTimeout(() => clearInterval(myInterval), 5000);
     }
 
     render() {
@@ -17,7 +42,7 @@ class Header extends Component {
                 <h3>Level: {this.props.tiles.level}</h3>
                 <h3>Round: {this.props.tiles.round}</h3>
                 <br/><br/>
-                <button onClick={() => this.props.dispatch(startGame())}>
+                <button onClick={() => this.startTheGame() }>
                     StartGame
                 </button>
             </div>

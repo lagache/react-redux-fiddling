@@ -1,7 +1,11 @@
 export const PLAY_SEQUENCE = 'PLAY_SEQUENCE';
 
+//TODO need to be move in a file managing all sets of data
+const INIT_SET_TILES = [{id: '0', color : 'red'}, {id: '1', color : 'blue'}, {id: '2', color: 'green'}, {id: '3', color : 'yellow'}];
+const SEQUENCE_1 = [1, 0, 3, 2];
+
+
 export function playSequence() {
-    console.log('in the play sequence action');
     return {
         type: PLAY_SEQUENCE,
         id: 1,
@@ -13,38 +17,17 @@ export const START_GAME = 'START_GAME';
 
 export function startGame() {
     return {
-        type: START_GAME
+        type: START_GAME,
+        data: INIT_SET_TILES,
+        sequence: SEQUENCE_1
     };
 }
 
+export const CHECK_TILE = 'CHECK_TILE';
 
-export const ADD_TILE = 'ADD_TILE';
-export const ACTIVE_TILE = 'ACTIVE_TILE';
-
-let nextTileId = 0;
-
-//function* getColor() {
-//    yield red;
-//    yield blue;
-//    yield green;
-//    yield black;
-//    yield lightred;
-//    yield lightblue;
-//    yield lightgreen;
-//};
-//
-//export function addTile(color) {
-//
-//    return {
-//        type: ADD_TILE,
-//        id: nextTileId++,
-//        color: getColor().next().value
-//    };
-//}
-
-export function activeTile(id) {
+export function checkTile(id) {
     return {
-        type: ACTIVE_TILE,
-        id: id
-    };
+        type: CHECK_TILE,
+        tileId: id
+    }
 }
