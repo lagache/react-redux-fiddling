@@ -26,9 +26,7 @@ class TilesList extends Component {
         }
         tiles = this.props.tiles.data.map(function (tile) {
             return (
-                <li>
                   <Tile data={tile} key={tile.id}/>
-                </li>
             );
         });
         // Injected by connect() call:
