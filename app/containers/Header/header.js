@@ -10,8 +10,8 @@ class Header extends Component {
     }
 
     playSequenceTillEnd(count) {
-
-        setTimeout(() => {
+        setTimeout(
+            () => {
                 if (--count > 0) {
                     this.props.dispatch(playSequence());
                     this.playSequenceTillEnd(count);
@@ -26,12 +26,6 @@ class Header extends Component {
     startTheGame() {
         this.props.dispatch(startGame());
         this.playSequenceTillEnd(5/*naughty magic number to remove with the number of object in the sequence*/);
-        //Todo use a timeout in a recursive function with a clause
-        //let myInterval = setInterval(
-        //    () => this.props.dispatch(playSequence())
-        //, 500);
-        //
-        //setTimeout(() => clearInterval(myInterval), 5000);
     }
 
     render() {
@@ -39,6 +33,7 @@ class Header extends Component {
         const { dispatch } = this.props;
         return (
             <div className="header">
+
                 <h3>Level: {this.props.tiles.level}</h3>
 
                 <h3>Round: {this.props.tiles.round}</h3>

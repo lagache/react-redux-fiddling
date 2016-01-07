@@ -9,19 +9,24 @@ export default function tiles(state = [], action = {}) {
                 isOn: false
             }
         case CHECK_TILE:
+            for (let i = 0; i < state.data.length; i++) {
+                state.data[i].good = false;
+                state.data[i].bad = false;
+            }
 
             if (state.sequence[state.currentTile++] === parseInt(action.tileId)) {
+                state.data[action.tileId].good = true;
                 if (state.sequence.length === state.currentTile) {
                     return {
-                        level: state.level,
-                        round: state.round,
+                        level: ++state.level,
+                        round: 0,
                         gameWon: true,
                         gameOn: state.gameOn
                     }
                 } else {
                     return {
                         level: state.level,
-                        round: state.round,
+                        round: ++state.round,
                         gameOn: true,
                         data: state.data,
                         sequence: state.sequence,
@@ -30,6 +35,7 @@ export default function tiles(state = [], action = {}) {
                     }
                 }
             } else {
+                state.data[action.tileId].good = false;
                 return {
                     level: state.level,
                     round: state.round,
