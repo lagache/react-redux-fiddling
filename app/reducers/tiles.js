@@ -15,10 +15,11 @@ export default function tiles(state = [], action = {}) {
             if (state.sequence[state.currentTile++] === parseInt(action.tileId)) {
                 state.data[action.tileId].good = true;
                 if (state.nbTilesToFind === state.currentTile) {
+                    state.nbTilesToFind++;
                     return {
                     	//LEVEL UP
                         level: ++state.level,
-                        round: 0,
+                        tilesRemaining: state.nbTilesToFind,
                         nbTileFound: ++state.nbTileFound,
                         nbTilesToFind: ++state.nbTilesToFind,
                         data: state.data,
@@ -32,7 +33,7 @@ export default function tiles(state = [], action = {}) {
                     return {
                     	//LEVEL IN PROGRESS
                         level: state.level,
-                        round: ++state.round,
+                        tilesRemaining: --state.tilesRemaining,
                         nbTileFound: ++state.nbTileFound,
                         nbTilesToFind: state.nbTilesToFind,
                         gameOn: true,
@@ -46,7 +47,7 @@ export default function tiles(state = [], action = {}) {
             	//GAME OVER
                 return {
                     level: state.level,
-                    round: state.round,
+                    tilesRemaining: state.tilesRemaining,
                     nbTileFound: state.nbTileFound,
                     gameOn: true,
                     gameOver: true
@@ -63,7 +64,7 @@ export default function tiles(state = [], action = {}) {
             if (state.currentSeq === state.nbTilesToFind) {
                 return {
                     level: state.level,
-                    round: state.round,
+                    tilesRemaining: state.tilesRemaining,
                     nbTileFound: state.nbTileFound,
                     gameOn: true,
                     data: state.data,
@@ -73,12 +74,11 @@ export default function tiles(state = [], action = {}) {
                 }
             } else {
                 let idTileToActive = state.sequence[state.currentSeq];
-                console.log(state.currentSeq);
                 state.data[idTileToActive].active = true;
 
                 return {
                     level: state.level,
-                    round: state.round,
+                    tilesRemaining: state.tilesRemaining,
                     nbTileFound: state.nbTileFound,
                     gameOn: true,
                     data: state.data,
@@ -95,14 +95,14 @@ export default function tiles(state = [], action = {}) {
 
             return {
                 level: 1,
-                round: 0,
-                nbTileFound: 0,
+                tilesRemaining: action.nbTilesToFind,
                 gameOn: true,
                 data: action.data,
                 sequence: action.sequence,
                 currentSeq: 0,
                 nbTilesToFind: action.nbTilesToFind,
-                playSequence: true
+                playSequence: true,
+                nbTileFound: 0
             }
 
         default:

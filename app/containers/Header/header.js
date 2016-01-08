@@ -37,11 +37,11 @@ class Header extends Component {
         return (
             <div className="header">
                 <br/>
-                <button onClick={() => this.startTheGame() }>
+                <button onClick={() => this.startTheGame()} >
                     START GAME
                 </button>
                 <br/>
-                <h3>Level: {this.props.tiles.level}   /    Round: {this.props.tiles.round}</h3>
+                <h3>Level: {this.props.tiles.level}   /    Tiles remaining: {this.props.tiles.tilesRemaining}</h3>
             </div>
         )
     }
