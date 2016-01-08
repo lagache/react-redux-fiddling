@@ -28,10 +28,17 @@ export function playSequence() {
 export const START_GAME = 'START_GAME';
 
 export function startGame() {
+    let randomSequence = [];
+    for(let i = 0; i< 100;i++) {
+        // Generate a random number between 0 and nb tiles
+        let newRandomNumber = Math.floor(Math.random() * INIT_SET_TILES.length);
+        randomSequence.push(newRandomNumber);
+    }
+
     return {
         type: START_GAME,
         data: INIT_SET_TILES,
-        sequence: SEQUENCE_1,
+        sequence: randomSequence,
         nbTilesToFind: NB_TILES_TO_FIND_INIT 
     };
 }
