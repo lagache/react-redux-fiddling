@@ -2,13 +2,11 @@ import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE } from '..
 
 export default function tiles(state = [], action = {}) {
     switch (action.type) {
-        case ADD_TILE:
-            return {
-                id: action.id,
-                color: action.color,
-                isOn: false
-            }
         case CHECK_TILE:
+            if(state.sequenceInProgress) {
+                return state;
+            }
+
             for (let i = 0; i < state.data.length; i++) {
                 state.data[i].good = false;
                 state.data[i].bad = false;
@@ -56,7 +54,6 @@ export default function tiles(state = [], action = {}) {
             }
 
         case PLAY_SEQUENCE:
-
             for (let i = 0; i < state.data.length; i++) {
                 state.data[i].active = false;
                 state.data[i].good = false;
@@ -76,7 +73,7 @@ export default function tiles(state = [], action = {}) {
                 }
             } else {
                 let idTileToActive = state.sequence[state.currentSeq];
-
+                console.log(state.currentSeq);
                 state.data[idTileToActive].active = true;
 
                 return {
@@ -87,10 +84,15 @@ export default function tiles(state = [], action = {}) {
                     data: state.data,
                     sequence: state.sequence,
                     currentSeq: ++state.currentSeq,
-                    nbTilesToFind: state.nbTilesToFind
+                    nbTilesToFind: state.nbTilesToFind,
+                    sequenceInProgress: true
                 }
             }
         case START_GAME:
+            if(state.sequenceInProgress) {
+                return state;
+            }
+
             return {
                 level: 1,
                 round: 0,
