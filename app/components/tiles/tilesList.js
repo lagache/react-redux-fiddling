@@ -10,9 +10,7 @@ import { Link } from 'react-router';
 class TilesList extends Component {
     constructor(props) {
         super(props);
-    }
-
-;
+    };
 
     render() {
         var tiles;
@@ -40,10 +38,7 @@ class TilesList extends Component {
           </div>
         );
     }
-
-;
 }
-;
 
 // Which props do we want to inject, given the global state?
 // Note: use https://github.com/faassen/reselect for better performance.
@@ -55,4 +50,3 @@ function select(state) {
 
 // Wrap the component to inject dispatch and state into it
 export default connect(select)(TilesList);
-
