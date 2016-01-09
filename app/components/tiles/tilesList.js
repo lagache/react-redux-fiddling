@@ -13,20 +13,14 @@ class TilesList extends Component {
     };
 
     render() {
-        var tiles;
-
-        if (!this.props.tiles.gameOn) {
-            return (<p>Ready? hit START GAME bro</p>);
-        } else if (this.props.tiles.gameOver) {
-            return (<p> GAME OVER... {this.props.tiles.nbTileFound} in a row, not too bad, bro. </p>);
-        } else if (this.props.tiles.gameWon) {
-            return (<p> CONGRATULATIONS!</p>);
+        let tiles;
+        if(this.props.tiles.data) {
+          tiles = this.props.tiles.data.map(function (tile) {
+              return (
+                    <Tile data={tile} key={tile.id}/>
+              );
+          });
         }
-        tiles = this.props.tiles.data.map(function (tile) {
-            return (
-                  <Tile data={tile} key={tile.id}/>
-            );
-        });
         // Injected by connect() call:
         const { dispatch } = this.props;
 

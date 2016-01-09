@@ -29,22 +29,41 @@ class Header extends Component {
 
     render() {
         if(this.props.tiles.playSequence) {
-            this.playSequenceTillEnd(this.props.tiles.nbTilesToFind+1);
+            this.playSequenceTillEnd(this.props.tiles.nbTilesToFind + 1);
         }
 
         // Injected by connect() call:
         const { dispatch } = this.props;
-        return (
-            <div className="header">
-                <br/>
-                <button onClick={() => this.startTheGame()} >
-                    START GAME
-                </button>
-                <br/>
-                <h3>Level: {this.props.tiles.level}   /    Tiles remaining: {this.props.tiles.tilesRemaining}</h3>
-            </div>
-        )
-    }
+
+        if (!this.props.tiles.gameOn) {
+            return (
+                <div className="header">
+                    <br/>
+                    <button onClick={() => this.startTheGame()} >
+                        START GAME
+                    </button>
+                    <br/>
+            </div>);
+        } else if (this.props.tiles.gameOver) {
+            return (
+                <div className="header">
+                    <br/>
+                    <button onClick={() => this.startTheGame()} >
+                        START GAME
+                    </button>
+                    <br/>
+                    <p> GAME OVER... {this.props.tiles.nbTileFound} in a row, not too bad, bro. </p>
+                </div>
+                );
+        } else {
+            return (
+                <div className="header">
+                    <br/>
+                    <h3>Level: {this.props.tiles.level}<br/><br/>Tiles remaining: {this.props.tiles.tilesRemaining}</h3>
+                </div>
+            )
+        }
+    }   
 }
 
 // Which props do we want to inject, given the global state?
