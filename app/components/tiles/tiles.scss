@@ -11,20 +11,70 @@
 	height: 70px;
 	margin: 20px;
 	border-radius: 20px;
-	border: 4px solid #dadada;
+	border: 2px solid #dadada;
 	position: relative;
 	float: left;
 	overflow: hidden;
 }
 
 .active {
-	border: 4px solid black;
     border-radius: 20px;
+    animation-name: glowing-tile;
+    animation-duration: 0.4s;
+}
+
+@keyframes glowing-tile {
+    0%    {box-shadow: 10 10 150px rgba(81, 203, 238, 1);
+           border: 2px solid rgba(81, 203, 238, 1);
+          }
+    10%   {box-shadow: 0 0 50px rgba(81, 203, 238, 1);
+           border: 2px solid rgba(81, 203, 238, 1);
+          }
+    25%   {box-shadow: 0 0 40px rgba(81, 203, 238, 1);
+           border: 2px solid rgba(81, 203, 238, 1);
+          }
+    35%   {box-shadow: 0 0 30px rgba(81, 203, 238, 1);
+           border: 2px solid rgba(81, 203, 238, 1);
+          }
+    50%   {box-shadow: 0 0 20px rgba(81, 203, 238, 1);
+           border: 2px solid rgba(81, 203, 238, 1);
+          }
+   75%    {box-shadow: 0 0 10px rgba(81, 203, 238, 1);
+           border: 2px solid rgba(81, 203, 238, 1);
+          }
+    100%  {box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+           border: 2px solid rgba(81, 203, 238, 1);
+          }
 }
 
 .good {
-	border: 4px solid green;
-    border-radius: 20px;	
+   border-radius: 20px;
+    animation-name: glowing-tile-good;
+    animation-duration: 0.4s;
+}
+
+@keyframes glowing-tile-good {
+    0%    {box-shadow: 10 10 150px rgba(0, 203, 0, 1);
+           border: 2px solid rgba(0, 203, 0, 1);
+          }
+    10%   {box-shadow: 0 0 50px rgba(0, 203, 0, 1);
+           border: 2px solid rgba(0, 203, 0, 1);
+          }
+    25%   {box-shadow: 0 0 40px rgba(0, 203, 0, 1);
+           border: 2px solid rgba(0, 203, 0, 1);
+          }
+    35%   {box-shadow: 0 0 30px rgba(0, 203, 0, 1);
+           border: 2px solid rgba(0, 203, 0, 1);
+          }
+    50%   {box-shadow: 0 0 20px rgba(0, 203, 0, 1);
+           border: 2px solid rgba(0, 203, 0, 1);
+          }
+    75%   {box-shadow: 0 0 10px rgba(0, 203, 0, 1);
+           border: 2px solid rgba(0, 203, 0, 1);
+          }
+    100%  {box-shadow: 0 0 5px rgba(0, 203, 0, 1);
+           border: 2px solid rgba(0, 203, 0, 1);
+          }
 }
 
 .red {
@@ -49,4 +99,59 @@
 
 .blueviolet {
   background-color: blueviolet;
+}
+
+/* General button style (reset) */
+.btn {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 25px 80px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+/* Button 2 */
+.btn-2 {
+	background: #cb4e4e;
+	color: #fff;
+	box-shadow: 0 6px #ab3c3c;
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+
+/* Button 2h */
+.btn-2h {
+	border-radius: 20px;
+}
+
+.btn-2h:hover {
+	box-shadow: 0 4px #ab3c3c;
+	top: 2px;
+}
+
+.btn-2h:active {
+	box-shadow: 0 0 #ab3c3c;
+	top: 6px;
 }
