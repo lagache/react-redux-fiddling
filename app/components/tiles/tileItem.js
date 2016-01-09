@@ -2,13 +2,22 @@ import React from 'react';
 import './tiles.scss';
 import classNames from 'classnames';
 import {connect} from 'react-redux';
-import {checkTile} from '../../actions'
+import {checkTile, deactivateTile} from '../../actions'
 
 
 let TileItem = React.createClass({
 
     handleClick(id) {
         this.props.dispatch(checkTile(this.props.data.id));
+    },
+
+    componentDidUpdate() {
+      if(this.props.data.active || this.props.data.good) {
+        setTimeout(
+          () => {
+            this.props.dispatch(deactivateTile(this.props.data.id));
+          }, 400);
+      }
     },
 
     render: function () {

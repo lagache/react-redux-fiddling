@@ -51,3 +51,12 @@ export function checkTile(id) {
         tileId: id
     }
 }
+
+export const DEACTIVATE_TILE = 'DEACTIVATE_TILE';
+
+export function deactivateTile(id) {
+    return {
+        type: DEACTIVATE_TILE,
+        tileId: id
+    }
+}

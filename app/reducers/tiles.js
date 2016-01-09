@@ -1,7 +1,25 @@
-import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE } from '../actions';
+import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE } from '../actions';
 
 export default function tiles(state = [], action = {}) {
     switch (action.type) {
+    	case DEACTIVATE_TILE:
+			for (let i = 0; i < state.data.length; i++) {
+	            state.data[i].active = false;
+	            state.data[i].good = false;
+	            state.data[i].bad = false;
+        	}
+            return {
+                level: state.level,
+                tilesRemaining: state.tilesRemaining,
+                nbTileFound: state.nbTileFound,
+                gameOn: state.gameOn,
+                data: state.data,
+                sequence: state.sequence,
+                currentSeq: state.currentSeq,
+                nbTilesToFind: state.nbTilesToFind,
+                sequenceInProgress: state.sequenceInProgress,
+                currentTile: state.currentTile
+            }
         case CHECK_TILE:
             if(state.sequenceInProgress) {
                 return state;
