@@ -6,9 +6,6 @@ export default function tiles(state = [], action = {}) {
     		if(!state.data) {
     			return state;
     		}
-
-    		console.log('DEACTIVATE_TILE' +'## '+state.data);
-			console.log(state);
 			for (let i = 0; i < state.data.length; i++) {
 	            state.data[i].active = false;
 	            state.data[i].good = false;
@@ -55,8 +52,6 @@ export default function tiles(state = [], action = {}) {
 	            }
         	}
         case CHECK_TILE:
-        console.log('CHECK_TILE' +'## '+state.data);
-			console.log(state);
             if(state.sequenceInProgress || state.playSequence || state.countdown) {
                 return state;
             }
@@ -109,9 +104,7 @@ export default function tiles(state = [], action = {}) {
             }
 
         case PLAY_SEQUENCE:
-        	console.log('PLAY_SEQUENCE' + state.currentSeq + '##'+new Date());
-        	console.log(state);
-            for (let i = 0; i < state.data.length; i++) {
+        	for (let i = 0; i < state.data.length; i++) {
                 state.data[i].active = false;
                 state.data[i].good = false;
                 state.data[i].bad = false;
