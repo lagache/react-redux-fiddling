@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import './header.scss';
 
 import {startGame, playSequence} from '../../actions';
-import Countdown from '../../components/countdown/countdown.js';
+import Countdown from '../../components/transition/countdown.js';
 
 class Header extends Component {
     constructor(props) {
