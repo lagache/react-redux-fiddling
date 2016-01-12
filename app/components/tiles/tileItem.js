@@ -8,7 +8,10 @@ import {checkTile, deactivateTile} from '../../actions'
 let TileItem = React.createClass({
 
     handleClick(id) {
-        this.props.dispatch(checkTile(this.props.data.id));
+      let state = this.props.state.tiles;
+        if(!state.sequenceHold && !state.sequenceInProgress && !state.playSequence && !state.countdown) {
+          this.props.dispatch(checkTile(this.props.data.id));
+        }
     },
 
     componentDidUpdate() {

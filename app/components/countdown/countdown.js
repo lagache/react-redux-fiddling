@@ -16,9 +16,9 @@ class Countdown extends Component {
 				this.setState({
 					timeRemaining: this.state.timeRemaining - 1
 				});
-				if (this.state.timeRemaining <= 0) {
+				if (this.state.timeRemaining <= 1) {
 					clearInterval(this.state.timer);
-					setTimeout(() => this.props.dispatch(playSequence()), 300); // launch the sequence
+					setTimeout(() => this.props.dispatch(playSequence()), 1000); // launch the sequence
 				}
 			}
 		, 1000);

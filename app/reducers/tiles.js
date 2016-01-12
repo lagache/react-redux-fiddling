@@ -3,14 +3,31 @@ import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVAT
 export default function tiles(state = [], action = {}) {
     switch (action.type) {
     	case DEACTIVATE_TILE:
-    		console.log('DEACTIVATE_TILE' +'##'+new Date());
+    		if(!state.data) {
+    			return state;
+    		}
+
+    		console.log('DEACTIVATE_TILE' +'## '+state.data);
 			console.log(state);
 			for (let i = 0; i < state.data.length; i++) {
 	            state.data[i].active = false;
 	            state.data[i].good = false;
 	            state.data[i].bad = false;
         	}
-        	if(state.sequenceHold || state.playSequence) {
+        	if(state.countdown) {
+        		return {
+	                level: state.level,
+	                tilesRemaining: state.tilesRemaining,
+	                nbTileFound: state.nbTileFound,
+	                gameOn: state.gameOn,
+	                data: state.data,
+	                sequence: state.sequence,
+	                nbTilesToFind: state.nbTilesToFind,
+	                currentTile: state.currentTile,
+	                countdown: state.countdown,
+	                currentSeq: state.currentSeq
+	            }
+        	} else if(state.sequenceHold || state.playSequence) {
 	            return {
 	                level: state.level,
 	                tilesRemaining: state.tilesRemaining,
@@ -21,7 +38,8 @@ export default function tiles(state = [], action = {}) {
 	                currentSeq: state.currentSeq,
 	                nbTilesToFind: state.nbTilesToFind,
 	                sequenceInProgress: true,
-	                currentTile: state.currentTile
+	                currentTile: state.currentTile,
+	                countdown: state.countdown
 	            }
         	} else {
         		return {
@@ -32,11 +50,14 @@ export default function tiles(state = [], action = {}) {
 	                data: state.data,
 	                sequence: state.sequence,
 	                nbTilesToFind: state.nbTilesToFind,
-	                currentTile: state.currentTile
+	                currentTile: state.currentTile,
+	                countdown: state.countdown
 	            }
         	}
         case CHECK_TILE:
-            if(state.sequenceInProgress) {
+        console.log('CHECK_TILE' +'## '+state.data);
+			console.log(state);
+            if(state.sequenceInProgress || state.playSequence || state.countdown) {
                 return state;
             }
 
@@ -60,7 +81,7 @@ export default function tiles(state = [], action = {}) {
                         currentSeq: 0,
                         currentTile: 0,
                         gameOn: state.gameOn,
-                        playSequence: true
+                        countdown: true
                     }
                 } else {
                     return {
