@@ -3,23 +3,38 @@ import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVAT
 export default function tiles(state = [], action = {}) {
     switch (action.type) {
     	case DEACTIVATE_TILE:
+    		console.log('DEACTIVATE_TILE' +'##'+new Date());
+			console.log(state);
 			for (let i = 0; i < state.data.length; i++) {
 	            state.data[i].active = false;
 	            state.data[i].good = false;
 	            state.data[i].bad = false;
         	}
-            return {
-                level: state.level,
-                tilesRemaining: state.tilesRemaining,
-                nbTileFound: state.nbTileFound,
-                gameOn: state.gameOn,
-                data: state.data,
-                sequence: state.sequence,
-                currentSeq: state.currentSeq,
-                nbTilesToFind: state.nbTilesToFind,
-                sequenceInProgress: state.sequenceInProgress,
-                currentTile: state.currentTile
-            }
+        	if(state.sequenceHold || state.playSequence) {
+	            return {
+	                level: state.level,
+	                tilesRemaining: state.tilesRemaining,
+	                nbTileFound: state.nbTileFound,
+	                gameOn: state.gameOn,
+	                data: state.data,
+	                sequence: state.sequence,
+	                currentSeq: state.currentSeq,
+	                nbTilesToFind: state.nbTilesToFind,
+	                sequenceInProgress: true,
+	                currentTile: state.currentTile
+	            }
+        	} else {
+        		return {
+	                level: state.level,
+	                tilesRemaining: state.tilesRemaining,
+	                nbTileFound: state.nbTileFound,
+	                gameOn: state.gameOn,
+	                data: state.data,
+	                sequence: state.sequence,
+	                nbTilesToFind: state.nbTilesToFind,
+	                currentTile: state.currentTile
+	            }
+        	}
         case CHECK_TILE:
             if(state.sequenceInProgress) {
                 return state;
@@ -73,6 +88,8 @@ export default function tiles(state = [], action = {}) {
             }
 
         case PLAY_SEQUENCE:
+        	console.log('PLAY_SEQUENCE' + state.currentSeq + '##'+new Date());
+        	console.log(state);
             for (let i = 0; i < state.data.length; i++) {
                 state.data[i].active = false;
                 state.data[i].good = false;
@@ -103,7 +120,7 @@ export default function tiles(state = [], action = {}) {
                     sequence: state.sequence,
                     currentSeq: ++state.currentSeq,
                     nbTilesToFind: state.nbTilesToFind,
-                    sequenceInProgress: true
+                    sequenceHold: true
                 }
             }
         case START_GAME:
@@ -119,8 +136,9 @@ export default function tiles(state = [], action = {}) {
                 sequence: action.sequence,
                 currentSeq: 0,
                 nbTilesToFind: action.nbTilesToFind,
-                playSequence: true,
-                nbTileFound: 0
+                sequenceInProgress: true,
+                nbTileFound: 0,
+                countdown: true
             }
 
         default:

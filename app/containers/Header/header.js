@@ -2,25 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+
+import './header.scss';
+
 import {startGame, playSequence} from '../../actions';
+import Countdown from '../../components/countdown/countdown.js';
 
 class Header extends Component {
     constructor(props) {
         super(props);
-    }
-
-    playSequenceTillEnd(count) {
-        setTimeout(
-            () => {
-                if (--count >= 0) {
-                    this.props.dispatch(playSequence());
-                    this.playSequenceTillEnd(count);
-                } else {
-
-                }
-
-            }
-            , 500);
     }
 
     startTheGame() {
@@ -28,10 +18,6 @@ class Header extends Component {
     }
 
     render() {
-        if(this.props.tiles.playSequence) {
-            this.playSequenceTillEnd(this.props.tiles.nbTilesToFind + 1);
-        }
-
         // Injected by connect() call:
         const { dispatch } = this.props;
 
@@ -49,17 +35,27 @@ class Header extends Component {
                 <div className="header">
                     <br/>
                     <button onClick={() => this.startTheGame()} >
-                        START GAME
+                        START NEW GAME
                     </button>
                     <br/>
                     <p> GAME OVER... {this.props.tiles.nbTileFound} in a row, not too bad, bro. </p>
+                </div>
+                );
+        } else if (this.props.tiles.countdown){
+            return (
+                <div className="header">
+                    <br/> <br/>
+                    <h1><Countdown duration="3" /></h1>
+                    <br/>
+                    <br/>
                 </div>
                 );
         } else {
             return (
                 <div className="header">
                     <br/>
-                    <h3>Level: {this.props.tiles.level}<br/><br/>Tiles remaining: {this.props.tiles.tilesRemaining}</h3>
+                    <h3>Level: {this.props.tiles.level}</h3>
+                    <h3>Tiles remaining: {this.props.tiles.tilesRemaining}</h3>
                 </div>
             )
         }

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Tile from './tileItem.js';
 import './tiles.scss';
-import {startGame} from '../../actions';
+import {playSequence} from '../../actions';
 
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
@@ -11,6 +11,18 @@ class TilesList extends Component {
     constructor(props) {
         super(props);
     };
+
+    playSequenceTillEnd() {
+        setTimeout(
+            () => {this.props.dispatch(playSequence())}
+            , 800);
+      }
+
+    componentDidUpdate() {
+      if(!this.props.tiles.countdown && this.props.tiles.sequenceInProgress || (this.props.tiles.playSequence && this.props.tiles.sequenceHold)) {
+            this.playSequenceTillEnd();
+        }
+    }
 
     render() {
         let tiles;

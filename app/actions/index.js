@@ -1,5 +1,5 @@
 export const PLAY_SEQUENCE = 'PLAY_SEQUENCE';
-const NB_TILES_TO_FIND_INIT = 4;
+const NB_TILES_TO_FIND_INIT = 2;
 
 //TODO need to be move in a file managing all sets of data
 const INIT_SET_TILES = [{id: '0', color: 'red'}, {id: '1', color: 'blue'}, {id: '2', color: 'green'}, 

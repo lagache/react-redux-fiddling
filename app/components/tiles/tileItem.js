@@ -15,7 +15,7 @@ let TileItem = React.createClass({
       if(this.props.data.active || this.props.data.good) {
         setTimeout(
           () => {
-            this.props.dispatch(deactivateTile(this.props.data.id));
+           this.props.dispatch(deactivateTile(this.props.data.id));
           }, 400);
       }
     },
