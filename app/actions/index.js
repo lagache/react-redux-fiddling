@@ -10,7 +10,6 @@ const INIT_SET_TILES = [
 {id: '4', color: 'yellow'},
 {id: '5', color: 'blueviolet'}
 ];
-const SEQUENCE_1 = [1, 0, 3, 2, 4, 5, 1, 2, 0, 3, 5, 2 , 1, 5, 1, 0];
 
 export function playSequence() {
     return {
@@ -34,7 +33,7 @@ export function startGame() {
         type: START_GAME,
         data: INIT_SET_TILES,
         sequence: randomSequence,
-        nbTilesToFind: NB_TILES_TO_FIND_INIT 
+        nbTilesToFind: NB_TILES_TO_FIND_INIT
     };
 }
 
@@ -53,5 +52,14 @@ export function deactivateTile(id) {
     return {
         type: DEACTIVATE_TILE,
         tileId: id
+    }
+}
+
+export const SET_NUM_TILES = 'SET_NUM_TILES';
+
+export function setNumberOfTiles(numberOfTiles) {
+    return {
+        type: SET_NUM_TILES,
+        numberOfTiles: numberOfTiles
     }
 }

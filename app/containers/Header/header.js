@@ -13,6 +13,10 @@ class Header extends Component {
         super(props);
     }
 
+    componentWillMount() {
+        this.startTheGame();
+    }
+
     startTheGame() {
         this.props.dispatch(startGame());
     }
@@ -21,22 +25,16 @@ class Header extends Component {
         // Injected by connect() call:
         const { dispatch } = this.props;
 
-        if (!this.props.tiles.gameOn) {
+        if (this.props.tiles.gameOver) {
             return (
                 <div className="header">
                     <br/>
-                    <button onClick={() => this.startTheGame()} >
-                        START GAME
-                    </button>
-                    <br/>
-            </div>);
-        } else if (this.props.tiles.gameOver) {
-            return (
-                <div className="header">
-                    <br/>
+                    <Link to="/">Menu</Link>
+                    <br/><br/>
                     <button onClick={() => this.startTheGame()} >
                         START NEW GAME
                     </button>
+
                     <br/>
                     <p> GAME OVER... {this.props.tiles.nbTileFound} in a row, not too bad, bro. </p>
                 </div>

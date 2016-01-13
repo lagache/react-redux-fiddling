@@ -1,4 +1,4 @@
-import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE } from '../actions';
+import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE, SET_NUM_TILES } from '../actions';
 
 export default function tiles(state = [], action = {}) {
     switch (action.type) {
@@ -153,6 +153,12 @@ export default function tiles(state = [], action = {}) {
                 sequenceInProgress: true,
                 nbTileFound: 0,
                 countdown: true
+            }
+
+        case SET_NUM_TILES:
+            return {
+                nbTiles: action.numberOfTiles,
+                gameOn: false
             }
 
         default:
