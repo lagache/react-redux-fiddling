@@ -18,7 +18,7 @@ class Header extends Component {
     }
 
     startTheGame() {
-        this.props.dispatch(startGame());
+        this.props.dispatch(startGame(this.props.tiles.nbTiles));
     }
 
     render() {

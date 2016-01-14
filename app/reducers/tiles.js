@@ -22,7 +22,8 @@ export default function tiles(state = [], action = {}) {
 	                nbTilesToFind: state.nbTilesToFind,
 	                currentTile: state.currentTile,
 	                countdown: state.countdown,
-	                currentSeq: state.currentSeq
+	                currentSeq: state.currentSeq,
+                    nbTiles: state.nbTiles
 	            }
         	} else if(state.sequenceHold || state.playSequence) {
 	            return {
@@ -36,7 +37,8 @@ export default function tiles(state = [], action = {}) {
 	                nbTilesToFind: state.nbTilesToFind,
 	                sequenceInProgress: true,
 	                currentTile: state.currentTile,
-	                countdown: state.countdown
+	                countdown: state.countdown,
+                    nbTiles: state.nbTiles
 	            }
         	} else {
         		return {
@@ -48,7 +50,8 @@ export default function tiles(state = [], action = {}) {
 	                sequence: state.sequence,
 	                nbTilesToFind: state.nbTilesToFind,
 	                currentTile: state.currentTile,
-	                countdown: state.countdown
+	                countdown: state.countdown,
+                    nbTiles: state.nbTiles
 	            }
         	}
         case CHECK_TILE:
@@ -76,7 +79,8 @@ export default function tiles(state = [], action = {}) {
                         currentSeq: 0,
                         currentTile: 0,
                         gameOn: state.gameOn,
-                        countdown: true
+                        countdown: true,
+                        nbTiles: state.nbTiles
                     }
                 } else {
                     return {
@@ -89,7 +93,8 @@ export default function tiles(state = [], action = {}) {
                         data: state.data,
                         sequence: state.sequence,
                         currentTile: state.currentTile,
-                        gameOn: state.gameOn
+                        gameOn: state.gameOn,
+                        nbTiles: state.nbTiles
                     }
                 }
             } else {
@@ -99,7 +104,8 @@ export default function tiles(state = [], action = {}) {
                     tilesRemaining: state.tilesRemaining,
                     nbTileFound: state.nbTileFound,
                     gameOn: true,
-                    gameOver: true
+                    gameOver: true,
+                    nbTiles: state.nbTiles
                 }
             }
 
@@ -119,7 +125,8 @@ export default function tiles(state = [], action = {}) {
                     data: state.data,
                     currentTile: 0,
                     sequence: state.sequence,
-                    nbTilesToFind: state.nbTilesToFind
+                    nbTilesToFind: state.nbTilesToFind,
+                    nbTiles: state.nbTiles
                 }
             } else {
                 let idTileToActive = state.sequence[state.currentSeq];
@@ -134,10 +141,12 @@ export default function tiles(state = [], action = {}) {
                     sequence: state.sequence,
                     currentSeq: ++state.currentSeq,
                     nbTilesToFind: state.nbTilesToFind,
-                    sequenceHold: true
+                    sequenceHold: true,
+                    nbTiles: state.nbTiles
                 }
             }
         case START_GAME:
+
             if(state.sequenceInProgress) {
                 return state;
             }
@@ -152,7 +161,8 @@ export default function tiles(state = [], action = {}) {
                 nbTilesToFind: action.nbTilesToFind,
                 sequenceInProgress: true,
                 nbTileFound: 0,
-                countdown: true
+                countdown: true,
+                nbTiles: state.nbTiles
             }
 
         case SET_NUM_TILES:
