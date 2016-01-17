@@ -7,10 +7,10 @@ import AppRouter from './routes';
 import {playSequence, activeTile} from './actions';
 
 const initialState = {
-    tiles: [{
+    tiles: {
         nbTiles: 4,
         gameOn: false
-    }]
+    }
 };
 
 const store = configureStore(initialState);

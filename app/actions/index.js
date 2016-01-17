@@ -22,6 +22,7 @@ export function playSequence() {
 export const START_GAME = 'START_GAME';
 
 export function startGame(numberOfTiles) {
+	console.log('wtf +'+numberOfTiles);
     let randomSequence = [];
     for(let i = 0; i< 100;i++) {
         // Generate a random number between 0 and nb tiles
