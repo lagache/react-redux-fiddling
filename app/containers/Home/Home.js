@@ -9,7 +9,7 @@ export default class Home extends Component {
 
     render() {
         return (
-            <div className="homepage">
+            <div className="home">
                 <ButtonGroup vertical>
                     <Link to="/game" className="btn btn-success"> play game </Link>
                     <br/>        

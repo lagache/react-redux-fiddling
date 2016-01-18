@@ -8,7 +8,7 @@ export default class Game extends Component {
 
     render() {
         return (
-            <div className="homepage">
+            <div className="game">
                 <Header />
                 <TilesList />
             </div>
