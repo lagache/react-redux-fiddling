@@ -7,8 +7,9 @@ export default class About extends Component {
         return (
             <div className ="about">
                 <p className="about-text">It's all about learning how to use react.</p>
-                <p className="about-text">Developers - Christophe / Xavier</p>
-                <p className="about-text">Testers - Anais</p>
+                <br/><br/>
+                <p className="about-text">Developer - Christophe</p>
+                <p className="about-text">Tester    - Anais</p>
             </div>
         );
     }
