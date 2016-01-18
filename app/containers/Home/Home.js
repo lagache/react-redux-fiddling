@@ -11,11 +11,11 @@ export default class Home extends Component {
         return (
             <div className="home">
                 <ButtonGroup vertical>
-                    <Link to="/game" className="btn btn-success"> play game </Link>
-                    <br/>        
-                    <Link to="/settings" className="btn btn-primary"> settings </Link>
+                    <Link to="/game" className="btn btn-success btn-lg"> play game </Link>
                     <br/>
-                    <Link to="/about" className="btn btn-primary"> about </Link>
+                    <Link to="/settings" className="btn btn-primary btn-lg"> settings </Link>
+                    <br/>
+                    <Link to="/about" className="btn btn-primary btn-lg"> about </Link>
                 </ButtonGroup>   
                 
             </div>

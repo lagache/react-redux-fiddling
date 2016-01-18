@@ -25,13 +25,13 @@ class Settings extends Component {
 
         let numberOfTilesOption = this.props.tiles.settingTileOption.map((tileOption) => {
           return (
-                <Button key={tileOption.value} onClick={() => this.setNumberOfTiles(tileOption.value) } active={tileOption.active}> {tileOption.value} </Button>
+                <Button bsStyle="primary" key={tileOption.value} onClick={() => this.setNumberOfTiles(tileOption.value) } active={tileOption.active}> {tileOption.value} </Button>
             );
         });
 
         let speedsOption = this.props.tiles.settingSpeedOption.map((speedOption) => {
           return (
-                <Button key={speedOption.value} onClick={() => this.setSpeedms(speedOption.value) }  active={speedOption.active}> {speedOption.label} </Button>
+                <Button bsStyle="primary" key={speedOption.value} onClick={() => this.setSpeedms(speedOption.value) }  active={speedOption.active}> {speedOption.label} </Button>
             );
         });
 
@@ -43,7 +43,7 @@ class Settings extends Component {
             <ButtonGroup>
               {numberOfTilesOption}
             </ButtonGroup>
-
+            <br/><br/>
             <h4>Speed</h4>
             <ButtonGroup>
               {speedsOption}
