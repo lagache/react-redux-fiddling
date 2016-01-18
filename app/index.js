@@ -18,7 +18,7 @@ const initialState = {
         settingSpeedOption : [
             {value: 1200, label: 'slow', active: false},
             {value: 800, label: 'normal', active: true},
-            {value: 400, label: 'fast', active: false} ],
+            {value: 300, label: 'fast', active: false} ],
         gameOn: false
     }
 };
