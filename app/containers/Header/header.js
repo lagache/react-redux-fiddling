@@ -23,7 +23,7 @@ class Header extends Component {
 
     render() {
         if (this.props.tiles.gameOver) {
-            let textScore = "you need to train a bit more";
+            let textScore = "you need to train a bit more...";
             let nbTileFound = this.props.tiles.nbTileFound;
             // Injected by connect() call:
             const { dispatch } = this.props;
@@ -45,7 +45,7 @@ class Header extends Component {
 
                     <div className="result-area">
                         <h4>GAME OVER...</h4>
-                        <p className="result-text">{this.props.tiles.nbTileFound} in a row, {textScore}</p>
+                        <p className="result-text">{this.props.tiles.nbTileFound} in a row <br/><br/>{textScore}</p>
                     </div>
                 </div>
                 );
@@ -56,6 +56,8 @@ class Header extends Component {
             }
             return (
                 <div className="header">
+                    <Link to="/" className="btn btn-primary"> menu </Link>
+                    <br/>
                     <br/>
                     <h3>Level: {this.props.tiles.level}</h3>
                     <h3>Tiles remaining: {this.props.tiles.tilesRemaining}</h3>
@@ -65,6 +67,8 @@ class Header extends Component {
         } else {
             return (
                 <div className="header">
+                    <Link to="/" className="btn btn-primary"> menu </Link>
+                    <br/>
                     <br/>
                     <h3>Level: {this.props.tiles.level}</h3>
                     <h3>Tiles remaining: {this.props.tiles.tilesRemaining}</h3>

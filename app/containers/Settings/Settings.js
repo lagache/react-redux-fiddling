@@ -38,16 +38,18 @@ class Settings extends Component {
         return (
 
           <div className="settings">
-
-            <h4>Number of tiles</h4>
-            <ButtonGroup>
-              {numberOfTilesOption}
-            </ButtonGroup>
-            <br/><br/>
-            <h4>Speed</h4>
-            <ButtonGroup>
-              {speedsOption}
-            </ButtonGroup>
+            <Link to="/" className="btn btn-primary"> menu </Link>
+            <div className="settings-button">
+                <h4>Number of tiles</h4>
+                <ButtonGroup>
+                  {numberOfTilesOption}
+                </ButtonGroup>
+                <br/><br/>
+                <h4>Speed</h4>
+                <ButtonGroup>
+                  {speedsOption}
+                </ButtonGroup>
+            </div>
           </div>
         );
     }

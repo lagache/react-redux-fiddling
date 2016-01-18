@@ -9,16 +9,16 @@ import {playSequence, activeTile} from './actions';
 const initialState = {
     tiles: {
         nbTiles: 4,
-        speedms: 750,
+        speedms: 700,
 
         settingTileOption : [
             {value: 4, active: false},
             {value: 6, active: true},
             {value: 8, active: false} ],
         settingSpeedOption : [
-            {value: 1200, label: 'slow', active: false},
-            {value: 800, label: 'normal', active: true},
-            {value: 300, label: 'fast', active: false} ],
+            {value: 1000, label: 'slow', active: false},
+            {value: 700, label: 'normal', active: true},
+            {value: 250, label: 'fast', active: false} ],
         gameOn: false
     }
 };
