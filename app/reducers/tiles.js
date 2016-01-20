@@ -54,9 +54,10 @@ export default function tiles(state = [], action = {}) {
 
             for (let i = 0; i < state.data.length; i++) {
                 state.data[i].active = false;
+                state.data[i].good = false;
+                state.data[i].bad = false;
             }
-            state.currentSeq++;
-
+            
             if (state.currentSeq === state.nbTilesToFind) {
                 return {
                     level: state.level,
@@ -78,18 +79,11 @@ export default function tiles(state = [], action = {}) {
                     gameOn: true,
                     data: state.data,
                     sequence: state.sequence,
-                    currentSeq: state.currentSeq,
+                    currentSeq: ++state.currentSeq,
                     nbTilesToFind: state.nbTilesToFind
                 }
             }
         case START_GAME:
-            for (let i = 0; i < action.data.length; i++) {
-                action.data[i].active = false;
-            }
-            let idTileToActive = action.sequence[0];
-
-            action.data[idTileToActive].active = true;
-
             return {
                 level: 1,
                 round: 0,

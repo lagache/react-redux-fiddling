@@ -11,15 +11,20 @@
 	height: 70px;
 	margin: 20px;
 	border-radius: 20px;
-	border: 2px solid black;
+	border: 4px solid #dadada;
 	position: relative;
 	float: left;
 	overflow: hidden;
 }
 
 .active {
-	border: 2px solid #dadada;
+	border: 4px solid black;
     border-radius: 20px;
+}
+
+.good {
+	border: 4px solid green;
+    border-radius: 20px;	
 }
 
 .red {
@@ -31,7 +36,7 @@
 }
 
 .green {
-  background-color: green;
+  background-color: greenyellow;
 }
 
 .yellow {

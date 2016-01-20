@@ -29,7 +29,7 @@ class Header extends Component {
 
     render() {
         if(this.props.tiles.playSequence) {
-            this.playSequenceTillEnd(this.props.tiles.nbTilesToFind);
+            this.playSequenceTillEnd(this.props.tiles.nbTilesToFind+1);
         }
 
         // Injected by connect() call:

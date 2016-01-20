@@ -15,7 +15,7 @@ const INIT_SET_TILES = [{id: '0', color: 'red'}, {id: '1', color: 'blue'}, {id: 
     id: '5',
     color: 'blueviolet'
 }];
-const SEQUENCE_1 = [1, 0, 3, 2, 4, 5, 1, 1, 0, 3, 5, 2 , 1, 5, 1, 0];
+const SEQUENCE_1 = [1, 0, 3, 2, 4, 5, 1, 2, 0, 3, 5, 2 , 1, 5, 1, 0];
 
 export function playSequence() {
     return {

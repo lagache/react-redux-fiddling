@@ -18,8 +18,7 @@ let TileItem = React.createClass({
 
         let tileClass = classNames("tile", data.color, {
             'active': data.active,
-            'good': data.good,
-            'bad': data.bad
+            'good': data.good
         });
 
         return (
