@@ -18,8 +18,10 @@ export default function tiles(state = [], action = {}) {
                 state.data[action.tileId].good = true;
                 if (state.nbTilesToFind === state.currentTile) {
                     return {
+                    	//LEVEL UP
                         level: ++state.level,
                         round: 0,
+                        nbTileFound: ++state.nbTileFound,
                         nbTilesToFind: ++state.nbTilesToFind,
                         data: state.data,
                         sequence: state.sequence,
@@ -30,8 +32,10 @@ export default function tiles(state = [], action = {}) {
                     }
                 } else {
                     return {
+                    	//LEVEL IN PROGRESS
                         level: state.level,
                         round: ++state.round,
+                        nbTileFound: ++state.nbTileFound,
                         nbTilesToFind: state.nbTilesToFind,
                         gameOn: true,
                         data: state.data,
@@ -41,10 +45,11 @@ export default function tiles(state = [], action = {}) {
                     }
                 }
             } else {
-                state.data[action.tileId].good = false;
+            	//GAME OVER
                 return {
                     level: state.level,
                     round: state.round,
+                    nbTileFound: state.nbTileFound,
                     gameOn: true,
                     gameOver: true
                 }
@@ -62,6 +67,7 @@ export default function tiles(state = [], action = {}) {
                 return {
                     level: state.level,
                     round: state.round,
+                    nbTileFound: state.nbTileFound,
                     gameOn: true,
                     data: state.data,
                     currentTile: 0,
@@ -76,6 +82,7 @@ export default function tiles(state = [], action = {}) {
                 return {
                     level: state.level,
                     round: state.round,
+                    nbTileFound: state.nbTileFound,
                     gameOn: true,
                     data: state.data,
                     sequence: state.sequence,
@@ -87,6 +94,7 @@ export default function tiles(state = [], action = {}) {
             return {
                 level: 1,
                 round: 0,
+                nbTileFound: 0,
                 gameOn: true,
                 data: action.data,
                 sequence: action.sequence,

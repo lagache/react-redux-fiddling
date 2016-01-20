@@ -38,7 +38,7 @@ class Header extends Component {
             <div className="header">
                 <br/>
                 <button onClick={() => this.startTheGame() }>
-                    Start game
+                    START GAME
                 </button>
                 <br/>
                 <h3>Level: {this.props.tiles.level}   /    Round: {this.props.tiles.round}</h3>

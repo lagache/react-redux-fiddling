@@ -18,9 +18,9 @@ class TilesList extends Component {
         var tiles;
 
         if (!this.props.tiles.gameOn) {
-            return (<p>game is not started</p>);
+            return (<p>Ready? hit START GAME bro</p>);
         } else if (this.props.tiles.gameOver) {
-            return (<p> sorry, wrong tile... game lost</p>);
+            return (<p> GAME OVER... {this.props.tiles.nbTileFound} in a row, not too bad, bro. </p>);
         } else if (this.props.tiles.gameWon) {
             return (<p> CONGRATULATIONS!</p>);
         }
