@@ -8,7 +8,9 @@ const INIT_SET_TILES = [
 {id: '2', color: 'grey'},
 {id: '3', color: 'green'}, 
 {id: '4', color: 'yellow'},
-{id: '5', color: 'blueviolet'}
+{id: '5', color: 'blueviolet'},
+{id: '6', color: 'dark'},
+{id: '7', color: 'green2'}
 ];
 
 export function playSequence() {
@@ -61,5 +63,14 @@ export function setNumberOfTiles(numberOfTiles) {
     return {
         type: SET_NUM_TILES,
         numberOfTiles: numberOfTiles
+    }
+}
+
+export const SET_SPEED = 'SET_SPEED';
+
+export function setSpeedms(speedms) {
+    return {
+        type: SET_SPEED,
+        speedms: speedms
     }
 }

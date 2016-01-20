@@ -9,11 +9,23 @@ import {playSequence, activeTile} from './actions';
 const initialState = {
     tiles: {
         nbTiles: 4,
+        speedms: 750,
+
+        settingTileOption : [
+            {value: 4, active: false},
+            {value: 6, active: true},
+            {value: 8, active: false} ],
+        settingSpeedOption : [
+            {value: 1200, label: 'slow', active: false},
+            {value: 800, label: 'normal', active: true},
+            {value: 400, label: 'fast', active: false} ],
         gameOn: false
     }
 };
 
 const store = configureStore(initialState);
+// debugger
+//store.subscribe(function () {console.log(store.getState())});
 
 class Root extends Component {
 

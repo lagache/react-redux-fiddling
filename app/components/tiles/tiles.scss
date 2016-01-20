@@ -17,7 +17,7 @@
 	overflow: hidden;
 }
 
-.active {
+.activeTile {
     border-radius: 20px;
     animation-name: glowing-tile;
     animation-duration: 0.4s;
@@ -93,7 +93,7 @@
 }
 
 .green {
-  background-color: rgba(0, 200, 100, 0.8);
+  background-color: rgba(0, 180, 100, 0.8);
 }
 
 .yellow {
@@ -101,9 +101,17 @@
 }
 
 .grey {
-  background-color: rgba(100, 100, 100, 0.8);
+  background-color: rgba(120, 120, 120, 0.8);
+}
+
+.dark {
+  background-color: rgba(20, 20, 20, 0.8);
 }
 
 .blueviolet {
   background-color: rgba(200, 0, 200, 0.8);
+}
+
+.green2 {
+  background-color: rgba(0, 220, 0, 0.8);
 }

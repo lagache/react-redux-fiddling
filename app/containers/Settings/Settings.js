@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { setNumberOfTiles } from '../../actions';
+import { setNumberOfTiles, setSpeedms } from '../../actions';
+import {Button, ButtonGroup, ButtonToolbar} from 'react-bootstrap';
 
 import './settings.scss';
 
@@ -15,34 +16,46 @@ class Settings extends Component {
         this.props.dispatch(setNumberOfTiles(numberOfTiles));
     }
 
+    setSpeedms(speedms) {
+      this.props.dispatch(setSpeedms(speedms));
+    }
+
     render() {
         const {dispatch} = this.props;
+
+        let numberOfTilesOption = this.props.tiles.settingTileOption.map((tileOption) => {
+          return (
+                <Button key={tileOption.value} onClick={() => this.setNumberOfTiles(tileOption.value) } active={tileOption.active}> {tileOption.value} </Button>
+            );
+        });
+
+        let speedsOption = this.props.tiles.settingSpeedOption.map((speedOption) => {
+          return (
+                <Button key={speedOption.value} onClick={() => this.setSpeedms(speedOption.value) }  active={speedOption.active}> {speedOption.label} </Button>
+            );
+        });
 
         return (
 
           <div className="settings">
-              <br/>
-              <button onClick={() => this.setNumberOfTiles(2)} >
-                  easy
-              </button> <span>only 2 tiles</span>
-              <br/>
-              <br/>
-              <button onClick={() => this.setNumberOfTiles(4)} >
-                  normal
-              </button> <span>only 4 tiles</span>
-              <br/><br/>
-              <button onClick={() => this.setNumberOfTiles(6)} >
-                  hard
-              </button> <span>only 6 tiles</span>
-              <br/><br/>
+
+            <h4>Number of tiles</h4>
+            <ButtonGroup>
+              {numberOfTilesOption}
+            </ButtonGroup>
+
+            <h4>Speed</h4>
+            <ButtonGroup>
+              {speedsOption}
+            </ButtonGroup>
           </div>
         );
     }
 }
 
-function select () {
+function select (state) {
     return {
-
+      tiles: state.tiles
     }
 }
 

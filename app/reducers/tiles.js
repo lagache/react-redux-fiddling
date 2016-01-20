@@ -1,4 +1,4 @@
-import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE, SET_NUM_TILES } from '../actions';
+import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE, SET_NUM_TILES, SET_SPEED } from '../actions';
 
 export default function tiles(state = [], action = {}) {
     switch (action.type) {
@@ -23,7 +23,10 @@ export default function tiles(state = [], action = {}) {
 	                currentTile: state.currentTile,
 	                countdown: state.countdown,
 	                currentSeq: state.currentSeq,
-                    nbTiles: state.nbTiles
+                    nbTiles: state.nbTiles,
+                    speedms: state.speedms,
+                    settingTileOption: state.settingTileOption,
+                    settingSpeedOption: state.settingSpeedOption
 	            }
         	} else if(state.sequenceHold || state.playSequence) {
 	            return {
@@ -38,7 +41,10 @@ export default function tiles(state = [], action = {}) {
 	                sequenceInProgress: true,
 	                currentTile: state.currentTile,
 	                countdown: state.countdown,
-                    nbTiles: state.nbTiles
+                    nbTiles: state.nbTiles,
+                    speedms: state.speedms,
+                    settingTileOption: state.settingTileOption,
+                    settingSpeedOption: state.settingSpeedOption
 	            }
         	} else {
         		return {
@@ -51,7 +57,10 @@ export default function tiles(state = [], action = {}) {
 	                nbTilesToFind: state.nbTilesToFind,
 	                currentTile: state.currentTile,
 	                countdown: state.countdown,
-                    nbTiles: state.nbTiles
+                    nbTiles: state.nbTiles,
+                    speedms: state.speedms,
+                    settingTileOption: state.settingTileOption,
+                    settingSpeedOption: state.settingSpeedOption
 	            }
         	}
         case CHECK_TILE:
@@ -80,7 +89,10 @@ export default function tiles(state = [], action = {}) {
                         currentTile: 0,
                         gameOn: state.gameOn,
                         countdown: true,
-                        nbTiles: state.nbTiles
+                        nbTiles: state.nbTiles,
+                        speedms: state.speedms,
+                        settingTileOption: state.settingTileOption,
+                        settingSpeedOption: state.settingSpeedOption
                     }
                 } else {
                     return {
@@ -94,7 +106,10 @@ export default function tiles(state = [], action = {}) {
                         sequence: state.sequence,
                         currentTile: state.currentTile,
                         gameOn: state.gameOn,
-                        nbTiles: state.nbTiles
+                        nbTiles: state.nbTiles,
+                        speedms: state.speedms,
+                        settingTileOption: state.settingTileOption,
+                        settingSpeedOption: state.settingSpeedOption
                     }
                 }
             } else {
@@ -105,7 +120,10 @@ export default function tiles(state = [], action = {}) {
                     nbTileFound: state.nbTileFound,
                     gameOn: true,
                     gameOver: true,
-                    nbTiles: state.nbTiles
+                    nbTiles: state.nbTiles,
+                    speedms: state.speedms,
+                    settingTileOption: state.settingTileOption,
+                    settingSpeedOption: state.settingSpeedOption
                 }
             }
 
@@ -126,7 +144,10 @@ export default function tiles(state = [], action = {}) {
                     currentTile: 0,
                     sequence: state.sequence,
                     nbTilesToFind: state.nbTilesToFind,
-                    nbTiles: state.nbTiles
+                    nbTiles: state.nbTiles,
+                    speedms: state.speedms,
+                    settingTileOption: state.settingTileOption,
+                    settingSpeedOption: state.settingSpeedOption
                 }
             } else {
                 let idTileToActive = state.sequence[state.currentSeq];
@@ -142,7 +163,10 @@ export default function tiles(state = [], action = {}) {
                     currentSeq: ++state.currentSeq,
                     nbTilesToFind: state.nbTilesToFind,
                     sequenceHold: true,
-                    nbTiles: state.nbTiles
+                    nbTiles: state.nbTiles,
+                    speedms: state.speedms,
+                    settingTileOption: state.settingTileOption,
+                    settingSpeedOption: state.settingSpeedOption                
                 }
             }
         case START_GAME:
@@ -162,14 +186,32 @@ export default function tiles(state = [], action = {}) {
                 sequenceInProgress: true,
                 nbTileFound: 0,
                 countdown: true,
-                nbTiles: state.nbTiles
+                nbTiles: state.nbTiles,
+                speedms: state.speedms,
+                settingTileOption: state.settingTileOption,
+                settingSpeedOption: state.settingSpeedOption
             }
 
         case SET_NUM_TILES:
-            return {
-                nbTiles: action.numberOfTiles,
-                gameOn: false
+
+            let newSetNumTilesState = Object.assign({}, state, 
+                {nbTiles: action.numberOfTiles});
+
+            for (let i=0; i < newSetNumTilesState.settingTileOption.length; i++) {
+                let tileOption = newSetNumTilesState.settingTileOption[i];
+                tileOption.active = (tileOption.value === action.numberOfTiles);
             }
+            return newSetNumTilesState;
+
+        case SET_SPEED:
+            let newSetSpeedState = Object.assign({}, state, 
+                {speedms: action.speedms});
+
+            for (let i=0; i < newSetSpeedState.settingSpeedOption.length; i++) {
+                let speedOption = newSetSpeedState.settingSpeedOption[i];
+                speedOption.active = (speedOption.value === action.speedms);
+            }
+            return newSetSpeedState;
 
         default:
             return state;

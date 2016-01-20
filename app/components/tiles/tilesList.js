@@ -15,7 +15,7 @@ class TilesList extends Component {
     playSequenceTillEnd() {
         setTimeout(
             () => {this.props.dispatch(playSequence())}
-            , 800);
+            , this.props.tiles.speedms);
       }
 
     componentDidUpdate() {
