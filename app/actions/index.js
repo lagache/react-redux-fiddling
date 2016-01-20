@@ -1,4 +1,5 @@
 export const PLAY_SEQUENCE = 'PLAY_SEQUENCE';
+const NB_TILES_TO_FIND_INIT = 4;
 
 //TODO need to be move in a file managing all sets of data
 const INIT_SET_TILES = [{id: '0', color: 'red'}, {id: '1', color: 'blue'}, {id: '2', color: 'green'}, 
@@ -14,8 +15,7 @@ const INIT_SET_TILES = [{id: '0', color: 'red'}, {id: '1', color: 'blue'}, {id: 
     id: '5',
     color: 'blueviolet'
 }];
-const SEQUENCE_1 = [1, 0, 3, 2];
-
+const SEQUENCE_1 = [1, 0, 3, 2, 4, 5, 1, 1, 0, 3, 5, 2 , 1, 5, 1, 0];
 
 export function playSequence() {
     return {
@@ -31,7 +31,8 @@ export function startGame() {
     return {
         type: START_GAME,
         data: INIT_SET_TILES,
-        sequence: SEQUENCE_1
+        sequence: SEQUENCE_1,
+        nbTilesToFind: NB_TILES_TO_FIND_INIT 
     };
 }
 

@@ -12,7 +12,7 @@ class Header extends Component {
     playSequenceTillEnd(count) {
         setTimeout(
             () => {
-                if (--count > 0) {
+                if (--count >= 0) {
                     this.props.dispatch(playSequence());
                     this.playSequenceTillEnd(count);
                 } else {
@@ -25,10 +25,13 @@ class Header extends Component {
 
     startTheGame() {
         this.props.dispatch(startGame());
-        this.playSequenceTillEnd(5/*naughty magic number to remove with the number of object in the sequence*/);
     }
 
     render() {
+        if(this.props.tiles.playSequence) {
+            this.playSequenceTillEnd(this.props.tiles.nbTilesToFind);
+        }
+
         // Injected by connect() call:
         const { dispatch } = this.props;
         return (
