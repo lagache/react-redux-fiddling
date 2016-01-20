@@ -20,22 +20,26 @@ class TilesList extends Component {
         if (!this.props.tiles.gameOn) {
             return (<p>game is not started</p>);
         } else if (this.props.tiles.gameOver) {
-            return (<p> you loose...</p>);
+            return (<p> sorry, wrong tile... game lost</p>);
         } else if (this.props.tiles.gameWon) {
             return (<p> CONGRATULATIONS!</p>);
         }
         tiles = this.props.tiles.data.map(function (tile) {
             return (
-                <Tile data={tile} key={tile.id}/>
+                <li>
+                  <Tile data={tile} key={tile.id}/>
+                </li>
             );
         });
         // Injected by connect() call:
         const { dispatch } = this.props;
 
         return (
-            <div className="TilesList">
+          <div>
+            <ul className="TilesList">
                 {tiles}
-            </div>
+            </ul>
+          </div>
         );
     }
 

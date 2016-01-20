@@ -1,14 +1,20 @@
 .TilesList {
-	display: -webkit-box;
+    margin: 35px 0 0 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    width: 100%;
 }
 
 .tile {
-  width: 100px;
-  height: 100px;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 20px;
-  border: 2px solid black;
+	width: 70px;
+	height: 70px;
+	margin: 20px;
+	border-radius: 20px;
+	border: 2px solid black;
+	position: relative;
+	float: left;
+	overflow: hidden;
 }
 
 .active {
@@ -30,4 +36,12 @@
 
 .yellow {
   background-color: yellow;
+}
+
+.grey {
+  background-color: grey;
+}
+
+.blueviolet {
+  background-color: blueviolet;
 }

@@ -33,14 +33,12 @@ class Header extends Component {
         const { dispatch } = this.props;
         return (
             <div className="header">
-
-                <h3>Level: {this.props.tiles.level}</h3>
-
-                <h3>Round: {this.props.tiles.round}</h3>
-                <br/><br/>
+                <br/>
                 <button onClick={() => this.startTheGame() }>
-                    StartGame
+                    Start game
                 </button>
+                <br/>
+                <h3>Level: {this.props.tiles.level}   /    Round: {this.props.tiles.round}</h3>
             </div>
         )
     }

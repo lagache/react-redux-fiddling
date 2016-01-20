@@ -27,7 +27,6 @@ let TileItem = React.createClass({
                  type="tile"
                  key={data.id}
                  onClick={() => this.handleClick(data.id)}>
-                tile {data.id}
             </div>
         );
     }

@@ -18,7 +18,7 @@ class Navbar extends Component {
             <div className="navbar">
                 <div className="brand">
           <span>
-            <Link to="/">Starter</Link>
+            <Link to="/">Tile's up</Link>
           </span>
                 </div>
             </div>

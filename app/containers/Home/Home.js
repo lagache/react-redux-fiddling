@@ -9,8 +9,6 @@ export default class Home extends Component {
     render() {
         return (
             <div className="homepage">
-                <h2>Tile's up!</h2>
-                <br/>
                 <Header />
                 <TilesList />
             </div>

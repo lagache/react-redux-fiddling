@@ -8,12 +8,14 @@ a {
   padding:10px;
   font-size:1.5em;
   line-height: 1.3em;
+  text-align: center;
   /* Flexbox */
-  display: -webkit-flex;
+  /*display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   flex-direction: row;
   vertical-align: middle;
+  */
 }
 .brand {
   font-size:1em;
