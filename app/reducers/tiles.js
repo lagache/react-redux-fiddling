@@ -21,7 +21,7 @@ export default function tiles(state = [], action = {}) {
                         level: ++state.level,
                         tilesRemaining: state.nbTilesToFind,
                         nbTileFound: ++state.nbTileFound,
-                        nbTilesToFind: ++state.nbTilesToFind,
+                        nbTilesToFind: state.nbTilesToFind,
                         data: state.data,
                         sequence: state.sequence,
                         currentSeq: 0,
