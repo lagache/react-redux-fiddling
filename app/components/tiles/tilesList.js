@@ -37,11 +37,9 @@ class TilesList extends Component {
         const { dispatch } = this.props;
 
         return (
-          <div className="tiles">
             <div className="TilesList">
                 {tiles}
             </div>
-          </div>
         );
     }
 }
