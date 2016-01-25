@@ -59,8 +59,8 @@ class Header extends Component {
                     <Link to="/" className="btn btn-primary"> menu </Link>
                     <br/>
                     <br/>
-                    <h3>Level: {this.props.tiles.level}</h3>
-                    <h3>Tiles remaining: {this.props.tiles.tilesRemaining}</h3>
+                    <h4>Level: {this.props.tiles.level}</h4>
+                    <h4>Tiles remaining: {this.props.tiles.tilesRemaining}</h4>
                     <h1><Countdown duration={duration} /></h1>
                 </div>
                 );
@@ -70,8 +70,8 @@ class Header extends Component {
                     <Link to="/" className="btn btn-primary"> menu </Link>
                     <br/>
                     <br/>
-                    <h3>Level: {this.props.tiles.level}</h3>
-                    <h3>Tiles remaining: {this.props.tiles.tilesRemaining}</h3>
+                    <h4>Level: {this.props.tiles.level}</h4>
+                    <h4>Tiles remaining: {this.props.tiles.tilesRemaining}</h4>
                     <br/>
                 </div>
             )

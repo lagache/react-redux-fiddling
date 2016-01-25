@@ -1,18 +1,18 @@
 .TilesList {
-    padding: 110px 0 0 0;
+    padding: 90px 0 0 0;
 }
 
 .tile {
-	width: 70px;
-	height: 70px;
-	margin: 20px;
-	border-radius: 20px;
+	width: 50px;
+	height: 50px;
+	margin: 10px 15px 5px 15px;
+	border-radius: 25px;
 	border: 2px solid #dadada;
     display: inline-block;
 }
 
 .activeTile {
-    border-radius: 20px;
+    border-radius: 15px;
     animation-name: glowing-tile;
     animation-duration: 0.15s;
 }
@@ -42,7 +42,7 @@
 }
 
 .good {
-   border-radius: 20px;
+   border-radius: 15px;
     animation-name: glowing-tile-good;
     animation-duration: 0.4s;
 }
