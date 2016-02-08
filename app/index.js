@@ -22,11 +22,15 @@ const initialState = {
         settingNewSequenceBetweenLevelsOption : [
             {value: true, label: 'no', active: true},
             {value: false, label: 'yes', active: false}],
+        settingColorOrPositionOption : [
+            {value: 'color', label: 'color', active: true},
+            {value: 'position', label: 'position', active: false}],    
         gameOn: false
     }
 };
 
 const store = configureStore(initialState);
+
 // debugger
 //store.subscribe(function () {console.log(store.getState())});
 

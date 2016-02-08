@@ -75,3 +75,12 @@ export function setNewSequenceBetweenLevels(newSequenceBetweenLevels) {
         newSequenceBetweenLevels: newSequenceBetweenLevels
     }
 }
+
+export const SET_SETTINGS_POSITION_OR_COLOR = 'SET_SETTINGS_POSITION_OR_COLOR';
+
+export function setSettingsPositionOrColor(positionOrColorOption) {
+    return {
+        type: SET_SETTINGS_POSITION_OR_COLOR,
+        positionOrColorOption: positionOrColorOption
+    }
+}

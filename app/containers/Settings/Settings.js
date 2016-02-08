@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { setNumberOfTiles, setSpeedms, setNewSequenceBetweenLevels } from '../../actions';
+import { setNumberOfTiles, setSpeedms, setNewSequenceBetweenLevels, setSettingsPositionOrColor } from '../../actions';
 import {Button, ButtonGroup, ButtonToolbar, Input} from 'react-bootstrap';
 
 import './settings.scss';
@@ -22,6 +22,10 @@ class Settings extends Component {
 
     setNewSequenceBetweenLevels(newSequenceBetweenLevelsOption) {
         this.props.dispatch(setNewSequenceBetweenLevels(newSequenceBetweenLevelsOption));
+    }
+
+    setPositionOrColorOptions(positionOrColorOption) {
+        this.props.dispatch(setSettingsPositionOrColor(positionOrColorOption));
     }
 
     render() {
@@ -45,24 +49,39 @@ class Settings extends Component {
             );
         });
 
+         let colorOrPositionOption = this.props.tiles.settingColorOrPositionOption.map((colorOrPositionOption) => {
+          return (
+                <Button bsStyle="primary" key={colorOrPositionOption.value} onClick={() => this.setPositionOrColorOptions(colorOrPositionOption.value) }  active={colorOrPositionOption.active}> {colorOrPositionOption.label} </Button>
+            );
+        });
+
         return (
 
           <div className="settings">
             <Link to="/" className="btn btn-primary"> menu </Link>
             <div className="settings-button">
+                
                 <h4>Number of tiles</h4>
                 <ButtonGroup>
                   {numberOfTilesOption}
                 </ButtonGroup>
+                
                 <br/><br/>
                 <h4>Speed</h4>
                 <ButtonGroup>
                   {speedsOption}
                 </ButtonGroup>
+                
                 <br/><br/>
                 <h4>New sequence between levels</h4>
                 <ButtonGroup>
                     {newSequenceBetweenLevelsOption}
+                </ButtonGroup>
+
+                <br/><br/>
+                <h4>Find tiles by</h4>
+                <ButtonGroup>
+                    {colorOrPositionOption}
                 </ButtonGroup>
 
             </div>
