@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { setNumberOfTiles, setSpeedms } from '../../actions';
-import {Button, ButtonGroup, ButtonToolbar} from 'react-bootstrap';
+import { setNumberOfTiles, setSpeedms, setNewSequenceBetweenLevels } from '../../actions';
+import {Button, ButtonGroup, ButtonToolbar, Input} from 'react-bootstrap';
 
 import './settings.scss';
 
@@ -18,6 +18,10 @@ class Settings extends Component {
 
     setSpeedms(speedms) {
       this.props.dispatch(setSpeedms(speedms));
+    }
+
+    setNewSequenceBetweenLevels(newSequenceBetweenLevelsOption) {
+        this.props.dispatch(setNewSequenceBetweenLevels(newSequenceBetweenLevelsOption));
     }
 
     render() {
@@ -35,6 +39,12 @@ class Settings extends Component {
             );
         });
 
+        let newSequenceBetweenLevelsOption = this.props.tiles.settingNewSequenceBetweenLevelsOption.map((newSequenceOption) => {
+          return (
+                <Button bsStyle="primary" key={newSequenceOption.value} onClick={() => this.setNewSequenceBetweenLevels(newSequenceOption.value) }  active={newSequenceOption.active}> {newSequenceOption.label} </Button>
+            );
+        });
+
         return (
 
           <div className="settings">
@@ -49,6 +59,12 @@ class Settings extends Component {
                 <ButtonGroup>
                   {speedsOption}
                 </ButtonGroup>
+                <br/><br/>
+                <h4>New sequence between levels</h4>
+                <ButtonGroup>
+                    {newSequenceBetweenLevelsOption}
+                </ButtonGroup>
+
             </div>
           </div>
         );

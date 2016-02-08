@@ -24,17 +24,9 @@ export function playSequence() {
 export const START_GAME = 'START_GAME';
 
 export function startGame(numberOfTiles) {
-    let randomSequence = [];
-    for(let i = 0; i< 100;i++) {
-        // Generate a random number between 0 and nb tiles
-        let newRandomNumber = Math.floor(Math.random() * numberOfTiles);
-        randomSequence.push(newRandomNumber);
-    }
-
     return {
         type: START_GAME,
         data: INIT_SET_TILES.slice(0, numberOfTiles),
-        sequence: randomSequence,
         nbTilesToFind: NB_TILES_TO_FIND_INIT
     };
 }
@@ -72,5 +64,14 @@ export function setSpeedms(speedms) {
     return {
         type: SET_SPEED,
         speedms: speedms
+    }
+}
+
+export const SET_NEW_SEQUENCE_BETWEEN_LEVELS = 'SET_NEW_SEQUENCE_BETWEEN_LEVELS';
+
+export function setNewSequenceBetweenLevels(newSequenceBetweenLevels) {
+    return {
+        type: SET_NEW_SEQUENCE_BETWEEN_LEVELS,
+        newSequenceBetweenLevels: newSequenceBetweenLevels
     }
 }

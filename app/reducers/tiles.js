@@ -1,4 +1,7 @@
-import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE, SET_NUM_TILES, SET_SPEED } from '../actions';
+import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE, 
+         SET_NUM_TILES, SET_SPEED, SET_NEW_SEQUENCE_BETWEEN_LEVELS } from '../actions';
+import {generateSequence} from '../components/Generator/sequenceGenerator.js';
+
 
 export default function tiles(state = [], action = {}) {
     switch (action.type) {
@@ -26,7 +29,8 @@ export default function tiles(state = [], action = {}) {
                     nbTiles: state.nbTiles,
                     speedms: state.speedms,
                     settingTileOption: state.settingTileOption,
-                    settingSpeedOption: state.settingSpeedOption
+                    settingSpeedOption: state.settingSpeedOption,
+                    settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption
 	            }
         	} else if(state.sequenceHold || state.playSequence) {
 	            return {
@@ -44,7 +48,8 @@ export default function tiles(state = [], action = {}) {
                     nbTiles: state.nbTiles,
                     speedms: state.speedms,
                     settingTileOption: state.settingTileOption,
-                    settingSpeedOption: state.settingSpeedOption
+                    settingSpeedOption: state.settingSpeedOption,
+                    settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption
 	            }
         	} else {
         		return {
@@ -60,7 +65,8 @@ export default function tiles(state = [], action = {}) {
                     nbTiles: state.nbTiles,
                     speedms: state.speedms,
                     settingTileOption: state.settingTileOption,
-                    settingSpeedOption: state.settingSpeedOption
+                    settingSpeedOption: state.settingSpeedOption,
+                    settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption
 	            }
         	}
         case CHECK_TILE:
@@ -77,6 +83,11 @@ export default function tiles(state = [], action = {}) {
                 state.data[action.tileId].good = true;
                 if (state.nbTilesToFind === state.currentTile) {
                     state.nbTilesToFind++;
+                    var newSequence = state.sequence;
+                    if(state.settingNewSequenceBetweenLevelsOption[1].active) { //option 'yes' active
+                        newSequence = generateSequence(state.nbTiles);
+                    }
+
                     return {
                     	//LEVEL UP
                         level: ++state.level,
@@ -84,7 +95,7 @@ export default function tiles(state = [], action = {}) {
                         nbTileFound: ++state.nbTileFound,
                         nbTilesToFind: state.nbTilesToFind,
                         data: state.data,
-                        sequence: state.sequence,
+                        sequence: newSequence,
                         currentSeq: 0,
                         currentTile: 0,
                         gameOn: state.gameOn,
@@ -92,7 +103,8 @@ export default function tiles(state = [], action = {}) {
                         nbTiles: state.nbTiles,
                         speedms: state.speedms,
                         settingTileOption: state.settingTileOption,
-                        settingSpeedOption: state.settingSpeedOption
+                        settingSpeedOption: state.settingSpeedOption,
+                        settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption
                     }
                 } else {
                     return {
@@ -109,7 +121,8 @@ export default function tiles(state = [], action = {}) {
                         nbTiles: state.nbTiles,
                         speedms: state.speedms,
                         settingTileOption: state.settingTileOption,
-                        settingSpeedOption: state.settingSpeedOption
+                        settingSpeedOption: state.settingSpeedOption,
+                        settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption
                     }
                 }
             } else {
@@ -123,7 +136,8 @@ export default function tiles(state = [], action = {}) {
                     nbTiles: state.nbTiles,
                     speedms: state.speedms,
                     settingTileOption: state.settingTileOption,
-                    settingSpeedOption: state.settingSpeedOption
+                    settingSpeedOption: state.settingSpeedOption,
+                    settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption
                 }
             }
 
@@ -147,7 +161,8 @@ export default function tiles(state = [], action = {}) {
                     nbTiles: state.nbTiles,
                     speedms: state.speedms,
                     settingTileOption: state.settingTileOption,
-                    settingSpeedOption: state.settingSpeedOption
+                    settingSpeedOption: state.settingSpeedOption,
+                    settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption
                 }
             } else {
                 let idTileToActive = state.sequence[state.currentSeq];
@@ -166,7 +181,8 @@ export default function tiles(state = [], action = {}) {
                     nbTiles: state.nbTiles,
                     speedms: state.speedms,
                     settingTileOption: state.settingTileOption,
-                    settingSpeedOption: state.settingSpeedOption                
+                    settingSpeedOption: state.settingSpeedOption,
+                    settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption
                 }
             }
         case START_GAME:
@@ -180,7 +196,7 @@ export default function tiles(state = [], action = {}) {
                 tilesRemaining: action.nbTilesToFind,
                 gameOn: true,
                 data: action.data,
-                sequence: action.sequence,
+                sequence: generateSequence(state.nbTiles),
                 currentSeq: 0,
                 nbTilesToFind: action.nbTilesToFind,
                 sequenceInProgress: true,
@@ -189,7 +205,8 @@ export default function tiles(state = [], action = {}) {
                 nbTiles: state.nbTiles,
                 speedms: state.speedms,
                 settingTileOption: state.settingTileOption,
-                settingSpeedOption: state.settingSpeedOption
+                settingSpeedOption: state.settingSpeedOption,
+                settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption
             }
 
         case SET_NUM_TILES:
@@ -213,7 +230,18 @@ export default function tiles(state = [], action = {}) {
             }
             return newSetSpeedState;
 
+        case SET_NEW_SEQUENCE_BETWEEN_LEVELS:
+            let newSetNewSequenceBetweenLevelsState = Object.assign({}, state, {});
+
+            for (let i=0; i < newSetNewSequenceBetweenLevelsState.settingNewSequenceBetweenLevelsOption.length; i++) {
+                let newSequenceOption = newSetNewSequenceBetweenLevelsState.settingNewSequenceBetweenLevelsOption[i];
+                newSequenceOption.active = (newSequenceOption.value === action.newSequenceBetweenLevels);
+            }
+            return newSetNewSequenceBetweenLevelsState;
+
+
         default:
             return state;
     }
 }
+

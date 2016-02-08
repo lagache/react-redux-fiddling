@@ -19,6 +19,9 @@ const initialState = {
             {value: 1000, label: 'slow', active: false},
             {value: 700, label: 'normal', active: true},
             {value: 250, label: 'fast', active: false} ],
+        settingNewSequenceBetweenLevelsOption : [
+            {value: true, label: 'no', active: true},
+            {value: false, label: 'yes', active: false}],
         gameOn: false
     }
 };
