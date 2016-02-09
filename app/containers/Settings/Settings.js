@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { setNumberOfTiles, setSpeedms, setNewSequenceBetweenLevels, setSettingsPositionOrColor } from '../../actions';
+import { setNumberOfTiles, setSpeedms, setNewSequenceBetweenLevels, setSettingsPositionOrColor, setSettingsShuffleTilesAfterSequenceOption } from '../../actions';
 import {Button, ButtonGroup, ButtonToolbar, Input} from 'react-bootstrap';
 
 import './settings.scss';
@@ -28,6 +28,10 @@ class Settings extends Component {
         this.props.dispatch(setSettingsPositionOrColor(positionOrColorOption));
     }
 
+    setSettingsShuffleTilesAfterSequenceOption(shuffleAfterSequenceOption) {
+        this.props.dispatch(setSettingsShuffleTilesAfterSequenceOption(shuffleAfterSequenceOption));
+    }
+
     render() {
         const {dispatch} = this.props;
 
@@ -46,6 +50,12 @@ class Settings extends Component {
         let newSequenceBetweenLevelsOption = this.props.tiles.settingNewSequenceBetweenLevelsOption.map((newSequenceOption) => {
           return (
                 <Button bsStyle="primary" key={newSequenceOption.value} onClick={() => this.setNewSequenceBetweenLevels(newSequenceOption.value) }  active={newSequenceOption.active}> {newSequenceOption.label} </Button>
+            );
+        });
+
+        let ShuffleTilesAfterSequenceOption = this.props.tiles.settingShuffleTilesAfterSequenceOption.map((shuffleTilesAfterSequenceOption) => {
+          return (
+                <Button bsStyle="primary" key={shuffleTilesAfterSequenceOption.value} onClick={() => this.setSettingsShuffleTilesAfterSequenceOption(shuffleTilesAfterSequenceOption.value) }  active={shuffleTilesAfterSequenceOption.active}> {shuffleTilesAfterSequenceOption.label} </Button>
             );
         });
 
@@ -76,6 +86,12 @@ class Settings extends Component {
                 <h4>New sequence between levels</h4>
                 <ButtonGroup>
                     {newSequenceBetweenLevelsOption}
+                </ButtonGroup>
+
+                <br/><br/>
+                <h4>Shuffle tiles after playing sequence</h4>
+                <ButtonGroup>
+                    {ShuffleTilesAfterSequenceOption}
                 </ButtonGroup>
 
                 <br/><br/>

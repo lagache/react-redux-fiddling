@@ -24,7 +24,10 @@ const initialState = {
             {value: false, label: 'yes', active: false}],
         settingColorOrPositionOption : [
             {value: 'color', label: 'color', active: true},
-            {value: 'position', label: 'position', active: false}],    
+            {value: 'position', label: 'position', active: false}],
+        settingShuffleTilesAfterSequenceOption : [
+            {value: false, label: 'no', active: true},
+            {value: true, label: 'yes', active: false}],
         gameOn: false
     }
 };

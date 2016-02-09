@@ -84,3 +84,12 @@ export function setSettingsPositionOrColor(positionOrColorOption) {
         positionOrColorOption: positionOrColorOption
     }
 }
+
+export const SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE = 'SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE';
+
+export function setSettingsShuffleTilesAfterSequenceOption(shuffleTilesAfterSequenceOption) {
+    return {
+        type: SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE,
+        shuffleTilesAfterSequenceOption: shuffleTilesAfterSequenceOption
+    }
+}
