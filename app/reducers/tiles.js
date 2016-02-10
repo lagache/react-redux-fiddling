@@ -7,17 +7,16 @@ import * as _ from 'underscore';
 export default function tiles(state = [], action = {}) {
     switch (action.type) {
     	case DEACTIVATE_TILE:
-            let newState = Object.assign({}, state, {});
-    		if(!state.data) {
-    			return state;
-    		}
+            let tiles = [], newState = Object.assign({}, state, {});
 
-			for (let i = 0; i < state.data.length; i++) {
-	            state.data[i].active = false;
-	            state.data[i].good = false;
-	            state.data[i].bad = false;
-        	}
-        	newState.data = state.data;	
+			_.each(state.data, function(tile) {
+                tile.active = false;
+                tile.good = false;
+                tile.bad = false;
+
+                tiles.push(tile);
+            });
+        	newState.data = tiles;
         	
             if(state.sequenceHold || state.playSequence) {
 	            newState.sequenceInProgress = true;
@@ -107,20 +106,23 @@ export default function tiles(state = [], action = {}) {
             }
 
         case PLAY_SEQUENCE:
+            let tiles = [];
 
-        	for (let i = 0; i < state.data.length; i++) {
-                state.data[i].active = false;
-                state.data[i].good = false;
-                state.data[i].bad = false;
-            }
+            _.each(state.data, function(tile) {
+                tile.active = false;
+                tile.good = false;
+                tile.bad = false;
+
+                tiles.push(tile);
+            });
             
             if (state.currentSeq === state.nbTilesToFind) {
                 if(state.settingShuffleTilesAfterSequenceOption[1].active) { // shuffle after playing sequence at true
-                    state.data = shuffleTiles(state.data);
+                    tiles = shuffleTiles(tiles);
                 }
 
                 if(state.settingColorOrPositionOption[1].active) { // position matters (shuffle color)
-                    state.data = shuffleColor(state.data);
+                    tiles = shuffleColor(tiles);
                 }
 
                 return {
@@ -128,7 +130,7 @@ export default function tiles(state = [], action = {}) {
                     tilesRemaining: state.tilesRemaining,
                     nbTileFound: state.nbTileFound,
                     gameOn: true,
-                    data: state.data,
+                    data: tiles,
                     currentTile: 0,
                     sequence: state.sequence,
                     nbTilesToFind: state.nbTilesToFind,
@@ -149,7 +151,7 @@ export default function tiles(state = [], action = {}) {
                     tilesRemaining: state.tilesRemaining,
                     nbTileFound: state.nbTileFound,
                     gameOn: true,
-                    data: state.data,
+                    data: tiles,
                     sequence: state.sequence,
                     currentSeq: ++state.currentSeq,
                     nbTilesToFind: state.nbTilesToFind,
@@ -194,54 +196,46 @@ export default function tiles(state = [], action = {}) {
             let newSetNumTilesState = Object.assign({}, state, 
                 {nbTiles: action.numberOfTiles});
 
-            for (let i=0; i < newSetNumTilesState.settingTileOption.length; i++) {
-                let tileOption = newSetNumTilesState.settingTileOption[i];
+            _.each(newSetNumTilesState.settingTileOption, function(tileOption) {
                 tileOption.active = (tileOption.value === action.numberOfTiles);
-            }
+            });
+
             return newSetNumTilesState;
 
         case SET_SPEED:
             let newSetSpeedState = Object.assign({}, state, 
                 {speedms: action.speedms});
 
-            for (let i=0; i < newSetSpeedState.settingSpeedOption.length; i++) {
-                let speedOption = newSetSpeedState.settingSpeedOption[i];
+            _.each(newSetSpeedState.settingSpeedOption, function(speedOption) {
                 speedOption.active = (speedOption.value === action.speedms);
-            }
+            });
+
             return newSetSpeedState;
 
         case SET_NEW_SEQUENCE_BETWEEN_LEVELS:
             let newSetNewSequenceBetweenLevelsState = Object.assign({}, state, {});
 
-            for (let i=0; i < newSetNewSequenceBetweenLevelsState.settingNewSequenceBetweenLevelsOption.length; i++) {
-                let newSequenceOption = newSetNewSequenceBetweenLevelsState.settingNewSequenceBetweenLevelsOption[i];
+            _.each(newSetNewSequenceBetweenLevelsState.settingNewSequenceBetweenLevelsOption, function(newSequenceOption) {
                 newSequenceOption.active = (newSequenceOption.value === action.newSequenceBetweenLevels);
-            }
+            });
+
             return newSetNewSequenceBetweenLevelsState;
 
         case SET_SETTINGS_POSITION_OR_COLOR:
             let newSettingsPositionOrColorState = Object.assign({}, state, {});
 
-            let newSettingColorOrPositionOption = state.settingColorOrPositionOption;
-            for (let i=0; i < newSettingColorOrPositionOption.length; i++) {
-                let option = newSettingColorOrPositionOption[i];
+            _.each(newSettingsPositionOrColorState.settingColorOrPositionOption, function (option) {
                 option.active = (option.value === action.positionOrColorOption);
-            };
-
-            newSettingsPositionOrColorState.settingColorOrPositionOption = newSettingColorOrPositionOption;
+            });
 
             return newSettingsPositionOrColorState;
 
         case SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE:
             let newSettingsShuffleTilesAfterSequenceState = Object.assign({}, state, {});
 
-            let newSettingsShuffleTilesAfterSequenceOption = state.settingShuffleTilesAfterSequenceOption;
-            for (let i=0; i < newSettingsShuffleTilesAfterSequenceOption.length; i++) {
-                let option = newSettingsShuffleTilesAfterSequenceOption[i];
+            _.each(newSettingsShuffleTilesAfterSequenceState.settingShuffleTilesAfterSequenceOption, function (option) {
                 option.active = (option.value === action.shuffleTilesAfterSequenceOption);
-            };
-
-            newSettingsShuffleTilesAfterSequenceState.settingShuffleTilesAfterSequenceOption = newSettingsShuffleTilesAfterSequenceOption;
+            });
 
             return newSettingsShuffleTilesAfterSequenceState;
 
