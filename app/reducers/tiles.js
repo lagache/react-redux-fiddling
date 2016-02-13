@@ -106,23 +106,23 @@ export default function tiles(state = [], action = {}) {
             }
 
         case PLAY_SEQUENCE:
-            let tiles = [];
+            let newTiles = [];
 
             _.each(state.data, function(tile) {
                 tile.active = false;
                 tile.good = false;
                 tile.bad = false;
 
-                tiles.push(tile);
+                newTiles.push(tile);
             });
             
             if (state.currentSeq === state.nbTilesToFind) {
                 if(state.settingShuffleTilesAfterSequenceOption[1].active) { // shuffle after playing sequence at true
-                    tiles = shuffleTiles(tiles);
+                    newTiles = shuffleTiles(newTiles);
                 }
 
                 if(state.settingColorOrPositionOption[1].active) { // position matters (shuffle color)
-                    tiles = shuffleColor(tiles);
+                    newTiles = shuffleColor(newTiles);
                 }
 
                 return {
@@ -130,7 +130,7 @@ export default function tiles(state = [], action = {}) {
                     tilesRemaining: state.tilesRemaining,
                     nbTileFound: state.nbTileFound,
                     gameOn: true,
-                    data: tiles,
+                    data: newTiles,
                     currentTile: 0,
                     sequence: state.sequence,
                     nbTilesToFind: state.nbTilesToFind,
@@ -151,7 +151,7 @@ export default function tiles(state = [], action = {}) {
                     tilesRemaining: state.tilesRemaining,
                     nbTileFound: state.nbTileFound,
                     gameOn: true,
-                    data: tiles,
+                    data: newTiles,
                     sequence: state.sequence,
                     currentSeq: ++state.currentSeq,
                     nbTilesToFind: state.nbTilesToFind,
