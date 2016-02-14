@@ -1,4 +1,7 @@
 const path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var extractCSS = new ExtractTextPlugin('stylesheets/[name].css');
 
 const PATHS = {
   app: path.join(__dirname, 'app/index.js'),
@@ -24,9 +27,12 @@ module.exports = {
             },
             // SASS
             {
-              test: /\.scss$/,
-              loader: 'style!css!sass'
+              test: /\.scss$/i,
+              loader: extractCSS.extract(['css','sass'])
             }
         ]
-    }
+    },
+    plugins: [
+        extractCSS
+    ]
 };
