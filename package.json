@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "start": "node bin/dev-server"
+    "start": "node bin/dev-server",
+    "build": "webpack"
   },
   "keywords": [
     "webpack",
