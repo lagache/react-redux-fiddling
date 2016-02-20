@@ -1,3 +1,24 @@
+import * as _ from 'underscore';
+
+const NUMBER_OF_IMAGES_AVAILABLE = 40;
+
+export function generateTiles(numberOfTiles) {
+  let tiles = [];
+  let numbers = [];
+  for(let i = 0 ; i < numberOfTiles ; i++) {
+    let randomNumber = generateNumber(0, NUMBER_OF_IMAGES_AVAILABLE);
+    if(!_.contains(numbers, randomNumber)) {
+      numbers.push(randomNumber);
+      tiles.push({id: i, imageId : randomNumber});
+    }
+  }
+
+  return tiles;
+}
+
+export function generateNumber(min, max) {
+    return Math.floor(min + Math.random() * (max - min));
+}
 
 export function	generateSequence(numberOfTiles) {
     let randomSequence = [];
@@ -47,14 +68,4 @@ export function shuffleTiles(array) {
 
   return array;
 }
-
-
-
-
-
-
-
-
-
-
 

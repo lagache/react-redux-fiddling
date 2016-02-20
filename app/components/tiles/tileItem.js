@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import {connect} from 'react-redux';
 import {checkTile, deactivateTile} from '../../actions'
 
+const IMAGES_PATH = './assets/images/tiles/';
+const IMAGES_EXTENSION = '.jpg';
 
 let TileItem = React.createClass({
 
@@ -34,11 +36,11 @@ let TileItem = React.createClass({
         });
 
         return (
-            <div className={tileClass}
-                 type="tile"
-                 key={data.id}
-                 onClick={() => this.handleClick(data.id)}>
-            </div>
+            <img key={data.id} 
+                 type="tile" 
+                 className={tileClass} 
+                 src={IMAGES_PATH+data.imageId+IMAGES_EXTENSION} 
+                 onClick={() => this.handleClick(data.id)} />
         );
     }
 });
