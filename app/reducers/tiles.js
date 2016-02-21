@@ -1,6 +1,6 @@
 import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE, 
          SET_NUM_TILES, SET_SPEED, SET_NEW_SEQUENCE_BETWEEN_LEVELS, SET_SETTINGS_POSITION_OR_COLOR, SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE } from '../actions';
-import {generateTiles, generateSequence, shuffleColor, shuffleTiles} from '../components/Generator/sequenceGenerator.js';
+import {generateTiles, generateSequence, shuffleImages, shuffleTiles} from '../components/Generator/sequenceGenerator.js';
 import * as _ from 'underscore';
 
 
@@ -122,7 +122,7 @@ export default function tiles(state = [], action = {}) {
                 }
 
                 if(state.settingColorOrPositionOption[1].active) { // position matters (shuffle color)
-                    newTiles = shuffleColor(newTiles);
+                    newTiles = shuffleImages(newTiles);
                 }
 
                 return {
@@ -221,6 +221,12 @@ export default function tiles(state = [], action = {}) {
         case SET_SETTINGS_POSITION_OR_COLOR:
             let newSettingsPositionOrColorState = Object.assign({}, state, {});
 
+            if(action.positionOrColorOption === 'position') {
+                _.each(newSettingsPositionOrColorState.settingShuffleTilesAfterSequenceOption, function (option) {
+                    option.active = (option.value === false);
+                });
+            }
+
             _.each(newSettingsPositionOrColorState.settingColorOrPositionOption, function (option) {
                 option.active = (option.value === action.positionOrColorOption);
             });
@@ -229,6 +235,12 @@ export default function tiles(state = [], action = {}) {
 
         case SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE:
             let newSettingsShuffleTilesAfterSequenceState = Object.assign({}, state, {});
+
+            if(action.shuffleTilesAfterSequenceOption) {
+                _.each(newSettingsShuffleTilesAfterSequenceState.settingColorOrPositionOption, function (option) {
+                    option.active = (option.value === 'color');
+                });
+            }
 
             _.each(newSettingsShuffleTilesAfterSequenceState.settingShuffleTilesAfterSequenceOption, function (option) {
                 option.active = (option.value === action.shuffleTilesAfterSequenceOption);

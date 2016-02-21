@@ -10,7 +10,7 @@ export function generateTiles(numberOfTiles) {
     let randomNumber = generateNumber(0, NUMBER_OF_IMAGES_AVAILABLE);
     if(!_.contains(numbers, randomNumber)) {
       numbers.push(randomNumber);
-      tiles.push({id: i, imageId : randomNumber});
+      tiles.push({id: i, imageId : randomNumber, order: i});
       i++;
     }
   }
@@ -33,8 +33,9 @@ export function	generateSequence(numberOfTiles) {
     return randomSequence;
 }
 
-export function shuffleColor(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+export function shuffleImages(tiles) {
+  var currentIndex = tiles.length, temporaryImageId, randomIndex,
+      tile_1, tile_2;
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
@@ -44,30 +45,45 @@ export function shuffleColor(array) {
     currentIndex -= 1;
 
     // And swap it with the current element.
-    temporaryValue = array[currentIndex].color;
-    array[currentIndex].color = array[randomIndex].color;
-    array[randomIndex].color = temporaryValue;
+    tile_1 = _.filter(tiles, function(tile) {
+      return (tile.order === currentIndex);
+    });
+    tile_2 = _.filter(tiles, function(tile) {
+      return (tile.order === randomIndex);
+    });
+    
+    temporaryImageId = tile_1[0].imageId;
+    tile_1[0].imageId = tile_2[0].imageId;
+    tile_2[0].imageId = temporaryImageId;
   }
 
-  return array;
+  return tiles;
 }
 
-export function shuffleTiles(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+export function shuffleTiles(tiles) {
+  var currentOrder = tiles.length, temporaryOrder, randomOrder,
+      tile_1, tile_2;
 
   // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+  while (0 !== currentOrder) {
 
     // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+    randomOrder = Math.floor(Math.random() * currentOrder);
+    currentOrder -= 1;
 
     // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
+    tile_1 = _.filter(tiles, function(tile) {
+      return (tile.order === currentOrder);
+    });
+    tile_2 = _.filter(tiles, function(tile) {
+      return (tile.order === randomOrder);
+    });
+    
+    temporaryOrder = tile_1[0].order;
+    tile_1[0].order = tile_2[0].order;
+    tile_2[0].order = temporaryOrder;
   }
 
-  return array;
+  return tiles;
 }
 

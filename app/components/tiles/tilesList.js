@@ -6,6 +6,7 @@ import {playSequence} from '../../actions';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import * as _ from 'underscore';
 
 class TilesList extends Component {
     constructor(props) {
@@ -25,9 +26,12 @@ class TilesList extends Component {
     }
 
     render() {
-        let tiles;
-        if(this.props.tiles.data) {
-          tiles = this.props.tiles.data.map(function (tile) {
+        let tilesSorted, tilesRendered;
+
+        tilesSorted = _.sortBy(this.props.tiles.data, 'order'); 
+
+        if(tilesSorted) {
+          tilesRendered = tilesSorted.map(function (tile) {
               return (
                     <Tile data={tile} key={tile.id}/>
               );
@@ -38,7 +42,7 @@ class TilesList extends Component {
 
         return (
             <div className="TilesList">
-                {tiles}
+                {tilesRendered}
             </div>
         );
     }
