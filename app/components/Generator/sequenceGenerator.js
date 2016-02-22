@@ -5,11 +5,13 @@ const NUMBER_OF_IMAGES_AVAILABLE = 40;
 export function generateTiles(numberOfTiles) {
   let tiles = [];
   let numbers = [];
-  for(let i = 0 ; i < numberOfTiles ; i++) {
+  let i = 0
+  while(tiles.length < numberOfTiles) {
     let randomNumber = generateNumber(0, NUMBER_OF_IMAGES_AVAILABLE);
     if(!_.contains(numbers, randomNumber)) {
       numbers.push(randomNumber);
       tiles.push({id: i, imageId : randomNumber});
+      i++;
     }
   }
 

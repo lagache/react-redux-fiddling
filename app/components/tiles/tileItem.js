@@ -21,7 +21,7 @@ let TileItem = React.createClass({
         setTimeout(
           () => {
            this.props.dispatch(deactivateTile(this.props.data.id));
-          }, 250);
+          }, 200);
       }
     },
 
@@ -39,7 +39,7 @@ let TileItem = React.createClass({
             <img key={data.id} 
                  type="tile" 
                  className={tileClass} 
-                 src={IMAGES_PATH+data.imageId+IMAGES_EXTENSION} 
+                 src={ IMAGES_PATH + data.imageId + IMAGES_EXTENSION } 
                  onClick={() => this.handleClick(data.id)} />
         );
     }

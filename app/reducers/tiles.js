@@ -166,11 +166,6 @@ export default function tiles(state = [], action = {}) {
                 }
             }
         case START_GAME:
-
-            if(state.sequenceInProgress) {
-                return state;
-            }
-
             let data =  generateTiles(action.numberOfTiles);
 
             return {

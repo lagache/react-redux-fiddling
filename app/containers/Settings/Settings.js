@@ -70,36 +70,34 @@ class Settings extends Component {
           <div className="settings">
             <Link to="/" className="btn btn-primary"> menu </Link>
             <div className="settings-button">
-                
-                <h4>Number of tiles</h4>
+                <h5>Number of tiles</h5>
                 <ButtonGroup>
                   {numberOfTilesOption}
                 </ButtonGroup>
                 
-                <br/><br/>
-                <h4>Speed</h4>
+                <br/>
+                <h5>Speed</h5>
                 <ButtonGroup>
                   {speedsOption}
                 </ButtonGroup>
                 
-                <br/><br/>
-                <h4>New sequence between levels</h4>
+                <br/>
+                <h5>New sequence between levels</h5>
                 <ButtonGroup>
                     {newSequenceBetweenLevelsOption}
                 </ButtonGroup>
 
-                <br/><br/>
-                <h4>Shuffle tiles after playing sequence</h4>
+                <br/>
+                <h5>Shuffle tiles after playing sequence</h5>
                 <ButtonGroup>
                     {ShuffleTilesAfterSequenceOption}
                 </ButtonGroup>
 
-                <br/><br/>
-                <h4>Find tiles by</h4>
+                <br/>
+                <h5>Find tiles by</h5>
                 <ButtonGroup>
                     {colorOrPositionOption}
                 </ButtonGroup>
-
             </div>
           </div>
         );
