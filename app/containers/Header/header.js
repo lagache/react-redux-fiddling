@@ -57,7 +57,6 @@ class Header extends Component {
             return (
                 <div className="header">
                     <Link to="/" className="btn btn-primary"> menu </Link>
-                    <br/>
                     <h1><Countdown duration={duration} /></h1>
                 </div>
                 );

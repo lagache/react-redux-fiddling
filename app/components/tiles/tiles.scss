@@ -1,71 +1,71 @@
 .TilesList {
-    padding: 30px 0 0 0;
+    padding: 10px 0 0 0;
 }
 
 .tile {
-	width: 60px;
-	height: 60px;
+	width: 75px;
+	height: 75px;
 	margin: 10px 15px 5px 15px;
-	border-radius: 8px;
+	border-radius: 10px;
 	border: 2px solid #dadada;
     display: inline-block;
 }
 
 .activeTile {
-    border-radius: 8px;
+    border-radius: 10px;
     animation-name: glowing-tile;
     animation-duration: 0.2s;
 }
 
 @keyframes glowing-tile {
     0%    {box-shadow: 0 0 150px rgba(0, 130, 200, 1);
-           border: 2px solid rgba(0, 130, 200, 1);
+           border: 6px solid rgba(0, 130, 200, 1);
           }
     10%   {box-shadow: 0 0 50px rgba(0, 130, 200, 1);
-           border: 2px solid rgba(0, 130, 200, 1);
+           border: 6px solid rgba(0, 130, 200, 1);
           }
     25%   {box-shadow: 0 0 40px rgba(0, 130, 200, 1);
-           border: 2px solid rgba(0, 130, 200, 1);
+           border: 5px solid rgba(0, 130, 200, 1);
           }
     35%   {box-shadow: 0 0 30px rgba(0, 130, 200, 1);
-           border: 2px solid rgba(0, 130, 200, 1);
+           border: 4px solid rgba(0, 130, 200, 1);
           }
     50%   {box-shadow: 0 0 20px rgba(0, 130, 200, 1);
-           border: 2px solid rgba(0, 130, 200, 1);
+           border: 3px solid rgba(0, 130, 200, 1);
           }
     75%   {box-shadow: 0 0 10px rgba(0, 130, 200, 1);
            border: 2px solid rgba(0, 130, 200, 1);
           }
     100%  {box-shadow: 0 0 5px rgba(0, 130, 200, 1);
-           border: 2px solid rgba(0, 130, 200, 1);
+           border: 1px solid rgba(0, 130, 200, 1);
           }
 } 
 
 .good {
-   border-radius: 8px;
+   border-radius: 10px;
     animation-name: glowing-tile-good;
-    animation-duration: 0.4s;
+    animation-duration: 0.3s;
 }
 
 @keyframes glowing-tile-good {
     0%    {box-shadow: 0 0 150px rgba(0, 203, 0, 1);
-           border: 2px solid rgba(0, 203, 0, 1);
+           border: 6px solid rgba(0, 203, 0, 1);
            opacity: 0.5;
           }
     10%   {box-shadow: 0 0 50px rgba(0, 203, 0, 1);
-           border: 2px solid rgba(0, 203, 0, 1);
+           border: 6px solid rgba(0, 203, 0, 1);
            opacity: 0.6;
           }
     25%   {box-shadow: 0 0 40px rgba(0, 203, 0, 1);
-           border: 2px solid rgba(0, 203, 0, 1);
+           border: 5px solid rgba(0, 203, 0, 1);
            opacity: 0.7;
           }
     35%   {box-shadow: 0 0 30px rgba(0, 203, 0, 1);
-           border: 2px solid rgba(0, 203, 0, 1);
+           border: 4px solid rgba(0, 203, 0, 1);
            opacity: 0.8;
           }
     50%   {box-shadow: 0 0 20px rgba(0, 203, 0, 1);
-           border: 2px solid rgba(0, 203, 0, 1);
+           border: 3px solid rgba(0, 203, 0, 1);
            opacity: 0.9;
           }
     75%   {box-shadow: 0 0 10px rgba(0, 203, 0, 1);
@@ -73,7 +73,7 @@
            opacity: 1;
           }
     100%  {box-shadow: 0 0 5px rgba(0, 203, 0, 1);
-           border: 2px solid rgba(0, 203, 0, 1);
+           border: 1px solid rgba(0, 203, 0, 1);
            opacity: 1;
           }
 }
