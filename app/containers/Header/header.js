@@ -8,6 +8,8 @@ import './header.scss';
 import {startGame, playSequence} from '../../actions';
 import Countdown from '../../components/transition/countdown.js';
 
+import Score from '../../components/score/score.js';
+
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -67,6 +69,7 @@ class Header extends Component {
                     <br/>
                     <h4>Level: {this.props.tiles.level}</h4>
                     <h4>Tiles remaining: {this.props.tiles.tilesRemaining}</h4>
+                    <Score/>
                     <br/>
                 </div>
             )
