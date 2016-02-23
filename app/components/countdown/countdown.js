@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {playSequence} from '../../actions';
-import './countdown.scss';
+//import {checkTile, deactivateTile} from '../../actions'
 
 class Countdown extends Component {
 	constructor(props) {
@@ -29,7 +29,7 @@ class Countdown extends Component {
 	}
 
 	render() {
-		return (<div className="countdown-text">{this.state.timeRemaining}</div>);
+		return (<div className="countdown">{this.state.timeRemaining}</div>);
 	}
 }
 
