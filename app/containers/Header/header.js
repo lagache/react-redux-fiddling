@@ -8,7 +8,7 @@ import './header.scss';
 import {startGame, playSequence} from '../../actions';
 import Countdown from '../../components/countdown/countdown.js';
 
-import Score from '../../components/score/score.js';
+import Score from '../score/score.js';
 
 class Header extends Component {
     constructor(props) {
