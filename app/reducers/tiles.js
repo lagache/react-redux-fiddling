@@ -64,7 +64,8 @@ export default function tiles(state = [], action = {}) {
                         settingSpeedOption: state.settingSpeedOption,
                         settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
                         settingColorOrPositionOption: state.settingColorOrPositionOption,
-                        settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption
+                        settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
+                        score: (state.score+100)
                     }
                 } else {
                     return {
@@ -84,7 +85,8 @@ export default function tiles(state = [], action = {}) {
                         settingSpeedOption: state.settingSpeedOption,
                         settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
                         settingColorOrPositionOption: state.settingColorOrPositionOption,
-                        settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption
+                        settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
+                        score: (state.score+10)
                     }
                 }
             } else {
@@ -101,7 +103,8 @@ export default function tiles(state = [], action = {}) {
                     settingSpeedOption: state.settingSpeedOption,
                     settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
-                    settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption
+                    settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
+                    score: state.score
                 }
             }
 
@@ -140,7 +143,8 @@ export default function tiles(state = [], action = {}) {
                     settingSpeedOption: state.settingSpeedOption,
                     settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
-                    settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption
+                    settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
+                    score: state.score
                 }
             } else {
                 let idTileToActive = state.sequence[state.currentSeq];
@@ -162,7 +166,8 @@ export default function tiles(state = [], action = {}) {
                     settingSpeedOption: state.settingSpeedOption,
                     settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
-                    settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption
+                    settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
+                    score: state.score
                 }
             }
         case START_GAME:
@@ -185,7 +190,8 @@ export default function tiles(state = [], action = {}) {
                 settingSpeedOption: state.settingSpeedOption,
                 settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
                 settingColorOrPositionOption: state.settingColorOrPositionOption,
-                settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption
+                settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
+                score: 0
             }
 
         case SET_NUM_TILES:

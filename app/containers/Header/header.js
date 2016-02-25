@@ -6,9 +6,9 @@ import { Link } from 'react-router';
 import './header.scss';
 
 import {startGame, playSequence} from '../../actions';
-import Countdown from '../../components/transition/countdown.js';
+import Countdown from '../../components/countdown/countdown.js';
 
-import Score from '../../components/score/score.js';
+import Score from '../score/score.js';
 
 class Header extends Component {
     constructor(props) {
@@ -46,8 +46,13 @@ class Header extends Component {
                     </button>
 
                     <div className="result-area">
-                        <h4>GAME OVER...</h4>
-                        <p className="result-text">{this.props.tiles.nbTileFound} in a row <br/><br/>{textScore}</p>
+                        <h4>Level</h4>
+                        <h5>{this.props.tiles.level}</h5>
+                        <h4>Score</h4>
+                        <h5>{this.props.tiles.score}</h5>
+                        <br/>
+                        <h5>GAME OVER...</h5>
+                        <p className="result-text">{this.props.tiles.nbTileFound} in a row<br/><br/>{textScore}</p>
                     </div>
                 </div>
                 );
@@ -67,9 +72,8 @@ class Header extends Component {
                 <div className="header">
                     <Link to="/" className="btn btn-primary"> menu </Link>
                     <br/>
-                    <h4>Level: {this.props.tiles.level}</h4>
-                    <h4>Tiles remaining: {this.props.tiles.tilesRemaining}</h4>
-                    <Score/>
+                    <h4>Score</h4>
+                    <h5>{this.props.tiles.score}</h5>
                     <br/>
                 </div>
             )
