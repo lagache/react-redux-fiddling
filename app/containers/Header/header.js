@@ -8,7 +8,9 @@ import './header.scss';
 import {startGame, playSequence} from '../../actions';
 import Countdown from '../../components/countdown/countdown.js';
 
-import Score from '../score/score.js';
+import Score from '../../components/Score/score.js';
+import Goal from '../../components/Goal/goal.js';
+import Level from '../../components/Level/level.js';
 
 class Header extends Component {
     constructor(props) {
@@ -71,10 +73,11 @@ class Header extends Component {
             return (
                 <div className="header">
                     <Link to="/" className="btn btn-primary"> menu </Link>
-                    <br/>
-                    <h4>Score</h4>
-                    <Score />
-                    <br/>
+                    <div className="game-info-section">
+                        <Goal/>
+                        <Level/>
+                        <Score/>
+                    </div>
                 </div>
             )
         }

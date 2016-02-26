@@ -8,7 +8,7 @@ import {playSequence, activeTile} from './actions';
 
 const initialState = {
     tiles: {
-        nbTiles: 4,
+        nbTiles: 6,
         speedms: 700,
 
         settingTileOption : [
@@ -16,9 +16,9 @@ const initialState = {
             {value: 6, active: true},
             {value: 8, active: false} ],
         settingSpeedOption : [
-            {value: 1000, label: 'slow', active: false},
-            {value: 700, label: 'normal', active: true},
-            {value: 250, label: 'fast', active: false} ],
+            {value: 9000, label: 'slow', active: false},
+            {value: 650, label: 'normal', active: true},
+            {value: 350, label: 'fast', active: false} ],
         settingNewSequenceBetweenLevelsOption : [
             {value: true, label: 'no', active: true},
             {value: false, label: 'yes', active: false}],

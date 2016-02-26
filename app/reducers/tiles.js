@@ -1,6 +1,6 @@
 import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE, 
          SET_NUM_TILES, SET_SPEED, SET_NEW_SEQUENCE_BETWEEN_LEVELS, SET_SETTINGS_POSITION_OR_COLOR, SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE } from '../actions';
-import {generateTiles, generateSequence, shuffleImages, shuffleTiles} from '../components/Generator/sequenceGenerator.js';
+import {generateTiles, generateSequence, shuffleImages, shuffleTiles} from '../Helper/Generator/sequenceGenerator.js';
 import * as _ from 'underscore';
 
 
