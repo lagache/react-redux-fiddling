@@ -73,7 +73,7 @@ class Header extends Component {
                     <Link to="/" className="btn btn-primary"> menu </Link>
                     <br/>
                     <h4>Score</h4>
-                    <h5>{this.props.tiles.score}</h5>
+                    <Score />
                     <br/>
                 </div>
             )
