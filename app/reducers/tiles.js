@@ -21,6 +21,26 @@ export default function tiles(state = [], action = {}) {
             if(state.sequenceHold || state.playSequence) {
 	            newState.sequenceInProgress = true;
             }
+            
+            if(state.showBadTile) {             
+                //GAME OVER
+                return {
+                    level: state.level,
+                    tilesRemaining: state.tilesRemaining,
+                    nbTileFound: state.nbTileFound,
+                    gameOn: true,
+                    gameOver: true,
+                    nbTiles: state.nbTiles,
+                    speedms: state.speedms,
+                    settingTileOption: state.settingTileOption,
+                    settingSpeedOption: state.settingSpeedOption,
+                    settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
+                    settingColorOrPositionOption: state.settingColorOrPositionOption,
+                    settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
+                    score: state.score,
+                    goal: ''
+                }
+            }
 
             return newState;
 
@@ -92,13 +112,26 @@ export default function tiles(state = [], action = {}) {
                     }
                 }
             } else {
-            	//GAME OVER
+                let tileBad = _.find(state.data, function(tile) {
+                    return (tile.id === action.tileId);
+                });
+                tileBad.bad = true;
+                
+                if (!state.showBadTile) {
+                    state.showBadTile = 4;
+                }
+
                 return {
+                    //SHOW BAD TILES
                     level: state.level,
                     tilesRemaining: state.tilesRemaining,
                     nbTileFound: state.nbTileFound,
+                    nbTilesToFind: state.nbTilesToFind,
                     gameOn: true,
-                    gameOver: true,
+                    data: state.data,
+                    sequence: state.sequence,
+                    currentTile: state.currentTile,
+                    gameOn: state.gameOn,
                     nbTiles: state.nbTiles,
                     speedms: state.speedms,
                     settingTileOption: state.settingTileOption,
@@ -107,7 +140,8 @@ export default function tiles(state = [], action = {}) {
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
                     settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                     score: state.score,
-                    goal: ''
+                    goal: 'wrong tile',
+                    showBadTile: --state.showBadTile
                 }
             }
 

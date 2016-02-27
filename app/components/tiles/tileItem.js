@@ -17,11 +17,11 @@ let TileItem = React.createClass({
     },
 
     componentDidUpdate() {
-      if(this.props.data.active || this.props.data.good) {
+      if(this.props.data.active || this.props.data.good || this.props.data.bad) {
         setTimeout(
           () => {
            this.props.dispatch(deactivateTile(this.props.data.id));
-          }, 200);
+          }, 350);
       }
     },
 
@@ -32,7 +32,8 @@ let TileItem = React.createClass({
 
         let tileClass = classNames("tile", data.color, {
             'activeTile': data.active,
-            'good': data.good
+            'good': data.good,
+            'bad': data.bad
         });
 
         return (
