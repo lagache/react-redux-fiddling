@@ -108,7 +108,7 @@ export default function tiles(state = [], action = {}) {
                         settingColorOrPositionOption: state.settingColorOrPositionOption,
                         settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                         score: (state.score + state.level* 10),
-                        goal: 'find tile ' + state.currentTile + '/' + state.nbTilesToFind 
+                        goal: 'find ' + state.currentTile + '/' + state.nbTilesToFind 
                     }
                 }
             } else {
@@ -182,7 +182,7 @@ export default function tiles(state = [], action = {}) {
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
                     settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                     score: state.score,
-                    goal: 'find tile '  + '0/' + state.nbTilesToFind
+                    goal: 'find '  + '0/' + state.nbTilesToFind
                 }
             } else {
                 let idTileToActive = state.sequence[state.currentSeq];
@@ -206,7 +206,7 @@ export default function tiles(state = [], action = {}) {
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
                     settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                     score: state.score,
-                    goal: 'in progress'
+                    goal: 'sequence...'
                 }
             }
         case START_GAME:
