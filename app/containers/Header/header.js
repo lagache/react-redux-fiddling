@@ -2,11 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
 import './header.scss';
 
 import {startGame, playSequence} from '../../actions';
-import Countdown from '../../components/countdown/countdown.js';
 
 import Score from '../../components/Score/score.js';
 import Goal from '../../components/Goal/goal.js';
@@ -56,17 +54,6 @@ class Header extends Component {
                         <h5>GAME OVER...</h5>
                         <p className="result-text">{this.props.tiles.nbTileFound} in a row<br/><br/>{textScore}</p>
                     </div>
-                </div>
-                );
-        } else if (this.props.tiles.countdown){
-            let duration = 3;
-            if(this.props.tiles.level > 0) {
-                duration = 2;
-            }
-            return (
-                <div className="header">
-                    <Link to="/" className="btn btn-primary"> menu </Link>
-                    <h1><Countdown duration={duration} /></h1>
                 </div>
                 );
         } else {

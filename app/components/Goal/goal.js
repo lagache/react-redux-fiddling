@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './goal.scss';
 
+import Countdown from '../countdown/countdown.js';
+
+
 class Goal extends Component {
 
 	constructor(props) {
@@ -9,12 +12,25 @@ class Goal extends Component {
 	}
 
 	render() {
-		return (
-			<div className="goal-info">
-				<h5>Goal</h5>
-				<h5>{this.props.state.tiles.goal}</h5>
-			</div>
-		);
+		 if (this.props.state.tiles.countdown){
+            let duration = 3;
+            if(this.props.state.tiles.level > 0) {
+                duration = 2;
+            }
+            return (
+            	<div className="goal-info">
+					<h4>Goal</h4>
+					<h5>{this.props.state.tiles.goal} <Countdown duration={duration} /></h5>
+                </div>
+                );
+		} else {
+			return (
+				<div className="goal-info">
+					<h4>Goal</h4>
+					<h5>{this.props.state.tiles.goal}</h5>
+				</div>
+			);
+		}
 	}
 }
 

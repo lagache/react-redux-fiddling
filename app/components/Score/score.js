@@ -11,7 +11,7 @@ class Score extends Component {
 	render() {
 		return (
 			<div className="level-info">
-				<h5>Score</h5>
+				<h4>Score</h4>
 				<h5>{this.props.state.tiles.score}</h5>
 			</div>
 		);
