@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import AppRouter from './routes';
 import {playSequence, activeTile} from './actions';
+import {retrieveScores} from './Helper/storage/localStorage.js';
 
 const initialState = {
     tiles: {
@@ -28,7 +29,8 @@ const initialState = {
         settingShuffleTilesAfterSequenceOption : [
             {value: false, label: 'no', active: true},
             {value: true, label: 'yes', active: false}],
-        gameOn: false
+        gameOn: false,
+        scores: retrieveScores()
     }
 };
 

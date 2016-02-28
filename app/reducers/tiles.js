@@ -1,6 +1,10 @@
+
 import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE, 
-         SET_NUM_TILES, SET_SPEED, SET_NEW_SEQUENCE_BETWEEN_LEVELS, SET_SETTINGS_POSITION_OR_COLOR, SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE } from '../actions';
+         SET_NUM_TILES, SET_SPEED, SET_NEW_SEQUENCE_BETWEEN_LEVELS, SET_SETTINGS_POSITION_OR_COLOR, SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE,
+         STORE_SCORE } from '../actions';
+
 import {generateTiles, generateSequence, shuffleImages, shuffleTiles} from '../Helper/Generator/sequenceGenerator.js';
+import {storeScore, retrieveScores} from '../Helper/storage/localStorage.js';
 import * as _ from 'underscore';
 
 
@@ -24,6 +28,11 @@ export default function tiles(state = [], action = {}) {
             
             if(state.showBadTile) {             
                 //GAME OVER
+
+                // Store new score in the local storage
+                storeScore(state.score);
+            
+                // return new state
                 return {
                     level: state.level,
                     tilesRemaining: state.tilesRemaining,
@@ -38,6 +47,7 @@ export default function tiles(state = [], action = {}) {
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
                     settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                     score: state.score,
+                    scores: retrieveScores(),
                     goal: ''
                 }
             }
@@ -86,6 +96,7 @@ export default function tiles(state = [], action = {}) {
                         settingColorOrPositionOption: state.settingColorOrPositionOption,
                         settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                         score: (state.score + state.level * 100),
+                        scores: state.scores,
                         goal: 'wait'
                     }
                 } else {
@@ -108,6 +119,7 @@ export default function tiles(state = [], action = {}) {
                         settingColorOrPositionOption: state.settingColorOrPositionOption,
                         settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                         score: (state.score + state.level* 10),
+                        scores: state.scores,
                         goal: 'find ' + state.currentTile + '/' + state.nbTilesToFind 
                     }
                 }
@@ -140,6 +152,7 @@ export default function tiles(state = [], action = {}) {
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
                     settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                     score: state.score,
+                    scores: state.scores,
                     goal: 'wrong tile',
                     showBadTile: --state.showBadTile
                 }
@@ -182,6 +195,7 @@ export default function tiles(state = [], action = {}) {
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
                     settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                     score: state.score,
+                    scores: state.scores,
                     goal: 'find '  + '0/' + state.nbTilesToFind
                 }
             } else {
@@ -206,7 +220,8 @@ export default function tiles(state = [], action = {}) {
                     settingColorOrPositionOption: state.settingColorOrPositionOption,
                     settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                     score: state.score,
-                    goal: 'sequence...'
+                    scores: state.scores,
+                    goal: 'wait ' + state.currentSeq + '/' + state.nbTilesToFind 
                 }
             }
         case START_GAME:
@@ -231,6 +246,7 @@ export default function tiles(state = [], action = {}) {
                 settingColorOrPositionOption: state.settingColorOrPositionOption,
                 settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
                 score: 0,
+                scores: retrieveScores(),
                 goal: 'wait'
             }
 
@@ -293,7 +309,7 @@ export default function tiles(state = [], action = {}) {
             });
 
             return newSettingsShuffleTilesAfterSequenceState;
-
+        
         default:
             return state;
     }
