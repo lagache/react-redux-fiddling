@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 //import './score.scss';
 
-const NUMBER_OF_BEST_SCORE_TO_SHOW = 3;
+const NUMBER_OF_BEST_SCORE_TO_SHOW = 5;
 
 class Scores extends Component {
 
