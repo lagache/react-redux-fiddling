@@ -61,8 +61,8 @@ class Header extends Component {
                 <div className="header">
                     <Link to="/" className="btn btn-primary"> menu </Link>
                     <div className="game-info-section">
-                        <Goal/>
                         <Level/>
+                        <Goal/>
                         <Score/>
                     </div>
                 </div>
