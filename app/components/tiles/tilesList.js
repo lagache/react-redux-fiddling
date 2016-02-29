@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Tile from './tileItem.js';
 import './tiles.scss';
 import {playSequence} from '../../actions';
+import classNames from 'classnames';
 
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
@@ -28,7 +29,13 @@ class TilesList extends Component {
     render() {
         let tilesSorted, tilesRendered;
 
-        tilesSorted = _.sortBy(this.props.tiles.data, 'order'); 
+        tilesSorted = _.sortBy(this.props.tiles.data, 'order');
+
+        let tilesListClass = classNames("TilesList", {
+            'show-4': (tilesSorted.length === 4),
+            'show-6': (tilesSorted.length === 6),
+            'show-8': (tilesSorted.length === 8)
+        });
 
         if(tilesSorted) {
           tilesRendered = tilesSorted.map(function (tile) {
@@ -41,7 +48,7 @@ class TilesList extends Component {
         const { dispatch } = this.props;
 
         return (
-            <div className="TilesList">
+            <div className={tilesListClass}>
                 {tilesRendered}
             </div>
         );

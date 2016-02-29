@@ -1,5 +1,42 @@
-.TilesList {
-    padding: 10px 0 0 0;
+@media all and (orientation:landscape) {
+  .TilesList {
+      padding: 10px 0 0 0;
+  }
+  .show-4 {
+      width: 300px;
+      margin: auto;
+  }
+
+  .show-6 {
+      width: 400px;
+      margin: auto;
+  }
+
+  .show-8 {
+      width: 450px;
+      margin: auto;
+  }
+}
+
+@media all and (orientation:portrait) {
+  .TilesList {
+      padding: 10px 0 0 0;
+  }
+
+  .show-4 {
+      width: 300px;
+      margin: auto;
+  }
+
+  .show-6 {
+      width: 300px;
+      margin: auto;
+  }
+
+  .show-8 {
+      width: 300px;
+      margin: auto;
+  }
 }
 
 .tile {
