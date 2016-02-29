@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-//import './score.scss';
 
 const NUMBER_OF_BEST_SCORE_TO_SHOW = 5;
 
@@ -20,10 +19,10 @@ class Scores extends Component {
 		}) ;
 
 		return (
-			<div className="level-info">
-				<h4>Best scores</h4>
+			<span className="level-info">
+				<h4 className="title-margin-top">Best scores</h4>
 				{scoresItem}
-			</div>
+			</span>
 		);
 	}
 }

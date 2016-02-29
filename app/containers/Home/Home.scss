@@ -1,4 +1,39 @@
-.home {
-  padding-top: 50px;
-  text-align: center;
+@media all and (orientation:portrait) {
+	.home {
+ 	  padding-top: 50px;
+  	  text-align: center;
+	}
+
+	.buttons {
+		width: 100%;
+	}
+
+	.scores {
+		width: 100%;
+
+		.title-margin-top {
+			margin-top: 35px;
+		}
+	}
+}
+@media all and (orientation:landscape) {
+	.home {
+	  padding-top: 50px;
+	  text-align: center;
+	  display: inline-flex;
+	  width: 100%;
+	}
+	
+	.buttons {
+		width: 50%;
+	}
+
+	.scores {
+		width: 50%;
+		margin-top: 0px;
+
+		.title-margin-top {
+			margin-top: 0px;
+		}
+	}
 }
