@@ -8,7 +8,9 @@ export function storeScore(newScore) {
         }
         
         scoresTab.push(newScore.toString());
-        scoresTab.sort();
+        scoresTab.sort(function(a, b) {
+            return parseInt(a) - parseInt(b);
+        });
         scoresTab.reverse();
 
         localStorage.scores = scoresTab.join();
