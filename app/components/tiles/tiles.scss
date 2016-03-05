@@ -1,14 +1,14 @@
 @media all and (orientation:landscape) {
   .TilesList {
-      padding: 10px 0 0 0;
+      //padding: 10px 0 0 0;
   }
   .show-4 {
-      width: 300px;
+      width: 280px;
       margin: auto;
   }
 
   .show-6 {
-      width: 400px;
+      width: 360px;
       margin: auto;
   }
 
@@ -16,15 +16,25 @@
       width: 450px;
       margin: auto;
   }
+  
+  .show-10 {
+      width: 450px;
+      margin: auto;
+  }
+
+  .show-12 {
+      width: 450px;
+      margin: auto;
+  }
 }
 
 @media all and (orientation:portrait) {
   .TilesList {
-      padding: 10px 0 0 0;
+      //padding: 10px 0 0 0;
   }
 
   .show-4 {
-      width: 300px;
+      width: 260px;
       margin: auto;
   }
 
@@ -37,21 +47,37 @@
       width: 300px;
       margin: auto;
   }
+  
+  .show-10 {
+      width: 300px;
+      margin: auto;
+  }
+  
+  .show-12 {
+      width: 320px;
+      margin: auto;
+  }
 }
 
 .tile {
-	width: 75px;
-	height: 75px;
-	margin: 10px 15px 5px 15px;
+	width: 65px;
+	height: 65px;
+	margin: 5px 15px 5px 15px;
 	border-radius: 10px;
 	border: 2px solid #dadada;
     display: inline-block;
 }
 
-.activeTile {
+.active-tile-even {
     border-radius: 10px;
     animation-name: glowing-tile;
-    animation-duration: 0.4s;
+    animation-duration: 0.5s;
+}
+
+.active-tile-odd {
+    border-radius: 10px;
+    animation-name: glowing-tile;
+    animation-duration: 0.5s;
 }
 
 @keyframes glowing-tile {
@@ -75,10 +101,16 @@
           }
 } 
 
-.good {
+.good-even {
    border-radius: 10px;
     animation-name: glowing-tile-good;
-    animation-duration: 0.4s;
+    animation-duration: 0.5s;
+}
+
+.good-odd {
+   border-radius: 10px;
+    animation-name: glowing-tile-good;
+    animation-duration: 0.5s;
 }
 
 @keyframes glowing-tile-good {

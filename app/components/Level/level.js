@@ -11,8 +11,8 @@ class Level extends Component {
 	render() {
 		return (
 			<div className="level-info">
-				<h4>Level</h4>
-				<h5>{this.props.state.tiles.level}</h5>
+				<h4 className="title-small-margin">Level</h4>
+				<h5 className="title-small-margin">{this.props.state.tiles.level}</h5>
 			</div>
 		);
 	}

@@ -19,15 +19,15 @@ class Goal extends Component {
             }
             return (
             	<div className="goal-info">
-					<h4>Goal</h4>
-					<h5>{this.props.state.tiles.goal} <Countdown duration={duration} /></h5>
+					<h4 className="title-small-margin">Goal</h4>
+					<h5 className="title-small-margin">{this.props.state.tiles.goal} <Countdown duration={duration} /></h5>
                 </div>
                 );
 		} else {
 			return (
 				<div className="goal-info">
-					<h4>Goal</h4>
-					<h5>{this.props.state.tiles.goal}</h5>
+					<h4 className="title-small-margin">Goal</h4>
+					<h5 className="title-small-margin">{this.props.state.tiles.goal}</h5>
 				</div>
 			);
 		}

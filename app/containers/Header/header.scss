@@ -1,9 +1,8 @@
 .header {
-  height: 115px;
+  //height: 115px;
 }
 
 .result-area {
-
 }
 
 .result-text {
@@ -12,6 +11,11 @@
 .game-info-section {
 	width: 100%;
 	display: flex;
+
+	.title-small-margin {
+		margin-top:3px;
+		margin-bottom:3px;
+	}
 }
 
 .info-element {
@@ -20,4 +24,9 @@
 
 .glyphicon-size {
 	font-size: 24px;	
+}
+
+.glyphicon-padding {
+	margin-right: 80%;
+	color: #666666;	
 }

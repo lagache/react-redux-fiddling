@@ -34,7 +34,9 @@ class TilesList extends Component {
         let tilesListClass = classNames("TilesList", {
             'show-4': (tilesSorted.length === 4),
             'show-6': (tilesSorted.length === 6),
-            'show-8': (tilesSorted.length === 8)
+            'show-8': (tilesSorted.length === 8),
+            'show-10': (tilesSorted.length === 10),
+            'show-12': (tilesSorted.length === 12)
         });
 
         if(tilesSorted) {

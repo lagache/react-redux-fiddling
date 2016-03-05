@@ -11,8 +11,8 @@ class Score extends Component {
 	render() {
 		return (
 			<div className="level-info">
-				<h4>Score</h4>
-				<h5>{this.props.state.tiles.score}</h5>
+				<h4 className="title-small-margin">Score</h4>
+				<h5 className="title-small-margin">{this.props.state.tiles.score}</h5>
 			</div>
 		);
 	}
