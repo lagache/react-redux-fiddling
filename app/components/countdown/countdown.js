@@ -12,13 +12,16 @@ class Countdown extends Component {
 	}
 
 	componentDidMount() {
+		var self = this;
 		this.state.timer = setInterval(() => {
-				this.setState({
-					timeRemaining: this.state.timeRemaining - 1
-				});
-				if (this.state.timeRemaining <= 1) {
-					clearInterval(this.state.timer);
-					setTimeout(() => this.props.dispatch(playSequence()), 1000); // launch the sequence
+				if(!self.props.state.tiles.pauseOn) {
+					this.setState({
+						timeRemaining: this.state.timeRemaining - 1
+					});
+					if (this.state.timeRemaining <= 0) {
+						clearInterval(this.state.timer);
+						setTimeout(() => this.props.dispatch(playSequence()), 0); // launch the sequence
+					}
 				}
 			}
 		, 1000);

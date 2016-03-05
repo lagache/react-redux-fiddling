@@ -1,5 +1,6 @@
 
-import { ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, START_GAME, CHECK_TILE, DEACTIVATE_TILE, 
+import { START_GAME, PAUSE_GAME, RESUME_GAME, STOP_GAME,
+         ADD_TILE, ACTIVE_TILE, PLAY_SEQUENCE, CHECK_TILE, DEACTIVATE_TILE, 
          SET_NUM_TILES, SET_SPEED, SET_NEW_SEQUENCE_BETWEEN_LEVELS, SET_SETTINGS_POSITION_OR_COLOR, SET_SETTINGS_SHUFFLE_TILES_AFTER_SEQUENCE,
          STORE_SCORE } from '../actions';
 
@@ -309,7 +310,46 @@ export default function tiles(state = [], action = {}) {
             });
 
             return newSettingsShuffleTilesAfterSequenceState;
+
+        case PAUSE_GAME:
+            let pauseGameState = Object.assign({}, state, {});
+
+            pauseGameState.pauseOn = true;
+
+            return pauseGameState;    
+
+        case RESUME_GAME:
+            let resumeGameState = Object.assign({}, state, {});
+
+            resumeGameState.pauseOn = false;
+
+            return resumeGameState;    
+
+        case STOP_GAME:
+            //GAME OVER
+
+            // Store new score in the local storage
+            storeScore(state.score);
         
+            // return new state
+            return {
+                level: state.level,
+                tilesRemaining: state.tilesRemaining,
+                nbTileFound: state.nbTileFound,
+                gameOn: true,
+                gameOver: true,
+                nbTiles: state.nbTiles,
+                speedms: state.speedms,
+                settingTileOption: state.settingTileOption,
+                settingSpeedOption: state.settingSpeedOption,
+                settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
+                settingColorOrPositionOption: state.settingColorOrPositionOption,
+                settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
+                score: state.score,
+                scores: retrieveScores(),
+                goal: ''
+            }    
+ 
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import './header.scss';
 
-import {startGame, playSequence} from '../../actions';
+import {startGame, pauseGame, resumeGame, stopGame, playSequence} from '../../actions';
 
 import Score from '../../components/Score/score.js';
 import Goal from '../../components/Goal/goal.js';
@@ -21,6 +21,18 @@ class Header extends Component {
 
     startTheGame() {
         this.props.dispatch(startGame(this.props.tiles.nbTiles));
+    }
+
+    pauseTheGame() {
+        this.props.dispatch(pauseGame());
+    }
+
+    resumeTheGame() {
+        this.props.dispatch(resumeGame());
+    }
+
+    stopTheGame() {
+        this.props.dispatch(stopGame());
     }
 
     render() {
@@ -57,21 +69,51 @@ class Header extends Component {
                 </div>
                 );
         } else {
-            return (
-                <div className="header">
-                    <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-color"/> </Link>
-                    
-                    <span className="glyphicon glyphicon-pause glyphicon-size glyphicon-margin-left-right glyphicon-color"/>
+            // if countdown in progress, you can pause the game
+            if(this.props.tiles.countdown) {
+                if(!this.props.tiles.pauseOn) {                
+                    return (
+                        <div className="header">
+                            <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-color"/> </Link>
+                            <span onClick={() => this.pauseTheGame()} className="glyphicon glyphicon-pause glyphicon-size glyphicon-margin-left-right glyphicon-color"/>
+                            <span onClick={() => this.startTheGame()} className="glyphicon glyphicon-repeat glyphicon-size glyphicon-color"/>
+                            <div className="game-info-section">
+                                <Level/>
+                                <Goal/>
+                                <Score/>
+                            </div>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div className="header">
+                            <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-color"/> </Link>
+                            <span onClick={() => this.resumeTheGame()} className="glyphicon glyphicon-play glyphicon-size glyphicon-margin-left-right glyphicon-color"/>
+                            <span onClick={() => this.startTheGame()} className="glyphicon glyphicon-repeat glyphicon-size glyphicon-color"/>
+                            <div className="game-info-section">
+                                <Level/>
+                                <Goal/>
+                                <Score/>
+                            </div>
+                        </div>
+                    )
+                }
+            } else {
+                // if game in progress, you can only stop the current game
 
-                    <span onClick={() => this.startTheGame()} className="glyphicon glyphicon-repeat glyphicon-size glyphicon-color"/>
-
-                    <div className="game-info-section">
-                        <Level/>
-                        <Goal/>
-                        <Score/>
+                return (
+                    <div className="header">
+                        <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-color"/> </Link>
+                        <span onClick={() => this.stopTheGame()} className="glyphicon glyphicon-stop glyphicon-size glyphicon-margin-left-right glyphicon-color"/>
+                        <span onClick={() => this.startTheGame()} className="glyphicon glyphicon-repeat glyphicon-size glyphicon-color"/>
+                        <div className="game-info-section">
+                            <Level/>
+                            <Goal/>
+                            <Score/>
+                        </div>
                     </div>
-                </div>
-            )
+                )
+            }
         }
     }   
 }
