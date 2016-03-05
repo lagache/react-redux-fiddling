@@ -68,36 +68,38 @@ class Settings extends Component {
         return (
 
           <div className="settings">
-            <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-padding"/> </Link>
-            <div className="settings-button">
-                <h5>Number of tiles</h5>
-                <ButtonGroup>
-                  {numberOfTilesOption}
-                </ButtonGroup>
-                
-                <br/>
-                <h5>Speed</h5>
-                <ButtonGroup>
-                  {speedsOption}
-                </ButtonGroup>
-                
-                <br/>
-                <h5>New sequence between levels</h5>
-                <ButtonGroup>
-                    {newSequenceBetweenLevelsOption}
-                </ButtonGroup>
+            <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-margin-right  glyphicon-color"/> </Link>
+            <div className="settings-buttons">
+                <div className="settings-buttons-block1">
+                    <h5>Number of tiles</h5>
+                    <ButtonGroup>
+                      {numberOfTilesOption}
+                    </ButtonGroup>
+                    
+                    <br/>
+                    <h5>Speed</h5>
+                    <ButtonGroup>
+                      {speedsOption}
+                    </ButtonGroup>
+                    
+                    <br/>
+                    <h5>New sequence between levels</h5>
+                    <ButtonGroup>
+                        {newSequenceBetweenLevelsOption}
+                    </ButtonGroup>
+                </div>
+                <div className="settings-buttons-block2">
+                    <h5>Shuffle tiles after playing sequence</h5>
+                    <ButtonGroup>
+                        {ShuffleTilesAfterSequenceOption}
+                    </ButtonGroup>
 
-                <br/>
-                <h5>Shuffle tiles after playing sequence</h5>
-                <ButtonGroup>
-                    {ShuffleTilesAfterSequenceOption}
-                </ButtonGroup>
-
-                <br/>
-                <h5>Find tiles by</h5>
-                <ButtonGroup>
-                    {colorOrPositionOption}
-                </ButtonGroup>
+                    <br/>
+                    <h5>Find tiles by</h5>
+                    <ButtonGroup>
+                        {colorOrPositionOption}
+                    </ButtonGroup>
+                </div>
             </div>
           </div>
         );

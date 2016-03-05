@@ -7,7 +7,7 @@ export default class About extends Component {
     render() {
         return (
             <div className ="about">
-                <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-padding"/> </Link>
+                <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size  glyphicon-color glyphicon-margin-right"/> </Link>
                 <div className="about-text">
                     <p>It's all about learning how to use react.</p>
                     <br/><br/>

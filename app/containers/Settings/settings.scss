@@ -1,9 +1,33 @@
 .settings {
 	text-align: center;
-	padding-top: 10px;
 }
 
-.settings-button {
-  padding-top: 20px;
-  padding-bottom: 20px;
+@media all and (orientation:portrait) {
+	.settings-buttons {
+		width: 100%;
+		padding-top: 10px;
+	}
+
+	.settings-buttons-block1 {
+		width: 100%;
+	}
+
+	.settings-buttons-block1 {
+		width: 100%;
+	}
+}
+@media all and (orientation:landscape) {
+	.settings-buttons {
+		width: 100%;
+		display: inline-flex;
+		padding-top: 10px;
+	}
+
+	.settings-buttons-block1 {
+		width: 50%;
+	}
+
+	.settings-buttons-block1 {
+		width: 50%;
+	}
 }
