@@ -60,6 +60,15 @@ export default function tiles(state = [], action = {}) {
                 return state;
             }
 
+            let scorePerTile = 10;
+            if(state.settingNewSequenceBetweenLevelsOption[1].active) { //option 'yes' active
+                scorePerTile += 5;
+            }
+
+            if(state.settingShuffleTilesAfterSequenceOption[1].active) { // shuffle after playing sequence at true
+                scorePerTile += 5;
+            }
+
             for (let i = 0; i < state.data.length; i++) {
                 state.data[i].good = false;
                 state.data[i].bad = false;
@@ -96,7 +105,7 @@ export default function tiles(state = [], action = {}) {
                         settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
                         settingColorOrPositionOption: state.settingColorOrPositionOption,
                         settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
-                        score: (state.score + state.level * 100),
+                        score: (state.score + state.level* scorePerTile + state.level * 50),
                         scores: state.scores,
                         goal: 'wait'
                     }
@@ -119,7 +128,7 @@ export default function tiles(state = [], action = {}) {
                         settingNewSequenceBetweenLevelsOption: state.settingNewSequenceBetweenLevelsOption,
                         settingColorOrPositionOption: state.settingColorOrPositionOption,
                         settingShuffleTilesAfterSequenceOption: state.settingShuffleTilesAfterSequenceOption,
-                        score: (state.score + state.level* 10),
+                        score: (state.score + state.level* scorePerTile),
                         scores: state.scores,
                         goal: 'find ' + state.currentTile + '/' + state.nbTilesToFind 
                     }
