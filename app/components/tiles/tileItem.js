@@ -16,12 +16,16 @@ let TileItem = React.createClass({
         }
     },
 
+    isEven(num) {
+      return num % 2;
+    },
+
     componentDidUpdate() {
       if(this.props.data.active || this.props.data.good || this.props.data.bad) {
         setTimeout(
           () => {
            this.props.dispatch(deactivateTile(this.props.data.id));
-          }, 350);
+          }, 200);
       }
     },
 
@@ -31,9 +35,11 @@ let TileItem = React.createClass({
         const {dispatch} = this.props;
 
         let tileClass = classNames("tile", data.color, {
-            'activeTile': data.active,
-            'good': data.good,
-            'bad': data.bad
+          'active-tile-even': data.active && this.isEven(this.props.state.currentSeq),
+          'active-tile-odd': data.active && !this.isEven(this.props.state.currentSeq),
+          'good-even': data.good && this.isEven(this.props.state.tilesRemaining),
+          'good-odd': data.good && !this.isEven(this.props.state.tilesRemaining),
+          'bad': data.bad
         });
 
         return (

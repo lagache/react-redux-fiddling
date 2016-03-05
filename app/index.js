@@ -15,7 +15,9 @@ const initialState = {
         settingTileOption : [
             {value: 4, active: false},
             {value: 6, active: true},
-            {value: 8, active: false} ],
+            {value: 8, active: false},
+            {value: 10, active: false},
+            {value: 12, active: false} ],
         settingSpeedOption : [
             {value: 9000, label: 'slow', active: false},
             {value: 650, label: 'normal', active: true},

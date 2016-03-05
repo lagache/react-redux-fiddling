@@ -68,7 +68,7 @@ class Settings extends Component {
         return (
 
           <div className="settings">
-            <Link to="/" className="btn btn-primary"> menu </Link>
+            <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-padding"/> </Link>
             <div className="settings-button">
                 <h5>Number of tiles</h5>
                 <ButtonGroup>
