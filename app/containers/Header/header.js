@@ -59,9 +59,11 @@ class Header extends Component {
         } else {
             return (
                 <div className="header">
-                    <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-padding"/> </Link>
+                    <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-color"/> </Link>
                     
-                    <span onClick={() => this.startTheGame()} className="glyphicon glyphicon-repeat glyphicon-size"/>
+                    <span className="glyphicon glyphicon-pause glyphicon-size glyphicon-margin-left-right glyphicon-color"/>
+
+                    <span onClick={() => this.startTheGame()} className="glyphicon glyphicon-repeat glyphicon-size glyphicon-color"/>
 
                     <div className="game-info-section">
                         <Level/>

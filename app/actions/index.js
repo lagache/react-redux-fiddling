@@ -19,6 +19,30 @@ export function startGame(numberOfTiles) {
     };
 }
 
+export const PAUSE_GAME = 'PAUSE_GAME';
+
+export function pauseGame() {
+    return {
+        type: PAUSE_GAME
+    };
+}
+
+export const RESUME_GAME = 'RESUME_GAME';
+
+export function resumeGame() {
+    return {
+        type: RESUME_GAME
+    };
+}
+
+export const STOP_GAME = 'STOP_GAME';
+
+export function stopGame() {
+    return {
+        type: STOP_GAME
+    };
+}
+
 export const CHECK_TILE = 'CHECK_TILE';
 
 export function checkTile(id) {
