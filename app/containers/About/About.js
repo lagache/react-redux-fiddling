@@ -10,7 +10,7 @@ export default class About extends Component {
                 <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size  glyphicon-color glyphicon-margin-right"/> </Link>
                 <div className="about-text">
                     <p>It's all about learning how to use react.</p>
-                    <br/><br/>
+                    <br/>
                     <p>Developer - Christophe</p>
                     <p>Tester    - Anais</p>
                 </div>
