@@ -171,6 +171,10 @@ export default function tiles(state = [], action = {}) {
         case PLAY_SEQUENCE:
             let newTiles = [];
 
+            if(state.gameOver) {
+                return state;
+            }
+
             _.each(state.data, function(tile) {
                 tile.active = false;
                 tile.good = false;
