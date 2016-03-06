@@ -10,12 +10,13 @@ class Scores extends Component {
 	}
 
 	render() {
+		let count = 0;
 		let scores = this.props.state.tiles.scores;
 		if(scores) {
 			scores = scores.slice(0, NUMBER_OF_BEST_SCORE_TO_SHOW); 
 		}
 		let scoresItem = scores.map(function(score) {
-			return (<h5>{score}</h5>);
+			return (<h5 key={count++}>{score}</h5>);
 		}) ;
 
 		return (
