@@ -51,11 +51,12 @@ class Header extends Component {
             }
             return (
                 <div className="header">
-                    <Link to="/" className="btn btn-primary"> menu </Link>
-                    <br/><br/>
-                    <button onClick={() => this.startTheGame()} className="btn btn-success">
-                        START NEW GAME
-                    </button>
+                    <div className="header">
+                        <Link to="/"> <span className="glyphicon glyphicon-chevron-left glyphicon-size glyphicon-color"/> </Link>
+                        <span onClick={() => this.startTheGame()} className="glyphicon glyphicon-play-circle glyphicon-size glyphicon-color glyphicon-margin-left-right"/>
+                        <Link to="/settings"> <span className="glyphicon glyphicon-cog glyphicon-size glyphicon-color"/> </Link>
+                    </div>
+
 
                     <div className="result-area">
                         <h4>Level</h4>
